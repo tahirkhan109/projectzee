@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.datetimepicker
+//= require jquery.dataTables.min
+//= require jquery.cleditor.min
 //= require_tree .
