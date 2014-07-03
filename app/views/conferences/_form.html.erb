@@ -1,0 +1,133 @@
+<div class="container-fluid">
+<div class="row-fluid sortable ui-sortable ">
+  <div class="box span12">
+    <div class="box-header">
+      <h2><i class="icon-align-justify"></i><span class="break"></span>Listing Conferences</h2>
+      <div class="box-icon">
+        <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+        <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+        <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+      </div>
+    </div>
+    <div class="box-content">
+
+<%= form_for @conference do |f|%>
+<%= f.text_field :title ,:placeholder => "Title" %><br>
+<%= f.text_field :start_datetime,:placeholder => "Start Date", :id => "datetimepicker" %><br>
+<%= f.text_field :end_datetime,:placeholder => "Start Date", :id => "datetimepicker1" %><br>
+    <%= f.text_field :location ,:placeholder => "location" %><br>
+          <%= link_to "Back",  conferences_path, :class => 'btn btn-primary' %>
+          <%= f.submit "Save" , :class => 'btn btn-primary' %>
+
+<% end %>
+      </div>
+      </div>
+      </div>
+      </div>
+<!--<script src="./jquery.datetimepicker.js"></script>-->
+<script>
+
+//$('#datetimepicker10').datetimepicker({
+//	step:5,
+//	inline:true
+//});
+//$('#datetimepicker_mask').datetimepicker({
+//	mask:'9999/19/39 29:59'
+//});
+$('#datetimepicker').datetimepicker();
+$('#datetimepicker1').datetimepicker();
+//$('#datetimepicker').datetimepicker({value:'2015/04/15 05:03',step:10});
+//$('#datetimepicker1').datetimepicker({
+//	datepicker:false,
+//	format:'H:i',
+//	step:5
+//});
+//$('#datetimepicker2').datetimepicker({
+//	yearOffset:222,
+//	lang:'ch',
+//	timepicker:false,
+//	format:'d/m/Y',
+//	formatDate:'Y/m/d',
+//	minDate:'-1970/01/02', // yesterday is minimum date
+//	maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+//});
+//$('#datetimepicker3').datetimepicker({
+//	inline:true
+//});
+//$('#datetimepicker4').datetimepicker();
+//$('#open').click(function(){
+//	$('#datetimepicker4').datetimepicker('show');
+//});
+//$('#close').click(function(){
+//	$('#datetimepicker4').datetimepicker('hide');
+//});
+//$('#reset').click(function(){
+//	$('#datetimepicker4').datetimepicker('reset');
+//});
+//$('#datetimepicker5').datetimepicker({
+//	datepicker:false,
+//	allowTimes:['12:00','13:00','15:00','17:00','17:05','17:20','19:00','20:00'],
+//	step:5
+//});
+//$('#datetimepicker6').datetimepicker();
+//$('#destroy').click(function(){
+//	if( $('#datetimepicker6').data('xdsoft_datetimepicker') ){
+//		$('#datetimepicker6').datetimepicker('destroy');
+//		this.value = 'create';
+//	}else{
+//		$('#datetimepicker6').datetimepicker();
+//		this.value = 'destroy';
+//	}
+//});
+var logic = function( currentDateTime ){
+	if( currentDateTime.getDay()==6 ){
+		this.setOptions({
+			minTime:'11:00'
+		});
+	}else
+		this.setOptions({
+			minTime:'8:00'
+		});
+};
+//$('#datetimepicker7').datetimepicker({
+//	onChangeDateTime:logic,
+//	onShow:logic
+//});
+//$('#datetimepicker8').datetimepicker({
+//	onGenerate:function( ct ){
+//		$(this).find('.xdsoft_date')
+//			.toggleClass('xdsoft_disabled');
+//	},
+//	minDate:'-1970/01/2',
+//	maxDate:'+1970/01/2',
+//	timepicker:false
+//});
+//$('#datetimepicker9').datetimepicker({
+//	onGenerate:function( ct ){
+//		$(this).find('.xdsoft_date.xdsoft_weekend')
+//			.addClass('xdsoft_disabled');
+//	},
+//	weekends:['01.01.2014','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014'],
+//	timepicker:false
+//});
+//var dateToDisable = new Date();
+//	dateToDisable.setDate(dateToDisable.getDate() + 2);
+//$('#datetimepicker11').datetimepicker({
+//	beforeShowDay: function(date) {
+//		if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+//			return [false, ""]
+//		}
+//
+//		return [true, ""];
+//	}
+//});
+//$('#datetimepicker12').datetimepicker({
+//	beforeShowDay: function(date) {
+//		if (date.getMonth() == dateToDisable.getMonth() && date.getDate() == dateToDisable.getDate()) {
+//			return [true, "custom-date-style"];
+//		}
+//
+//		return [true, ""];
+//	}
+//});
+</script>

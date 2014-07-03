@@ -1,0 +1,15 @@
+<p>
+  <b><%= "first name:" %></b>
+  <%= attendee_detail.first_name %>
+</p>
+<p>
+  <b><%= "last name:" %></b>
+  <%= attendee_detail.last_name %>
+</p>
+<p>
+
+  <%= link_to 'Delete Attendee', [attendee_detail.conference,attendee_detail],
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+
+</p>

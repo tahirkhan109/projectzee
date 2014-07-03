@@ -1,0 +1,82 @@
+<div class="row-fluid sortable ui-sortable">
+  <div class="box span12">
+    <div class="box-header">
+      <h2><i class="icon-align-justify"></i><span class="break"></span>Add Flight Detail</h2>
+      <div class="box-icon">
+        <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+        <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+        <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+      </div>
+    </div>
+    <div class="box-content">
+   <%= @attendee_detail.id %>
+<%# @flight_detail = FlightDetail.new() %>
+      <%#= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
+<%= form_for :ground_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
+    <p>
+    <%= f.text_field :airline_name,:placeholder => "Airline Name" %>
+      <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
+    </p>
+    <p>
+    <%= f.text_field :flight_number,:placeholder => "flight number"  %>
+    </p>
+    <p>
+    <%= f.text_field :departure_airport,:placeholder => "departure airport"  %>
+    </p>
+    <p>
+    <%= f.text_field :arrival_airport ,:placeholder => "arrival airport" %>
+    </p>
+    <p>
+    <%= f.text_field :date ,:placeholder => "date" %>
+    </p>
+    <p>
+    <%= f.text_field :time_of_flight ,:placeholder => "time of flight" %>
+    </p>
+          <%= f.submit "Save", :id => "add_flight_detail",:class=>"btn btn-lg btn-info margin10" %>
+          <a class="btn btn-lg btn-info margin10" id="cancel_boxs" onclick="cancel_box()"> Cancel </a>
+<% end %>
+        </div>
+        </div>
+        </div>
+
+
+<script type="text/javascript">
+  $("#add_flight_detail").click(function(){
+      var id = $("#attendee_id").val()
+      var airline_name = $("#flight_detail_airline_name").val()
+      var flight_number = $("#flight_detail_flight_number").val()
+      var departure_airport = $("#flight_detail_departure_airport").val()
+      var arrival_airport = $("#flight_detail_arrival_airport").val()
+      var date = $("#flight_detail_date").val()
+      var time_of_flight = $("#flight_detail_time_of_flight").val()
+      $.ajax({
+          url:'/welcome/add_flight_detail?id='+ id + "&airline_name=" + airline_name + "&flight_number=" + flight_number + "&departure_airport=" + departure_airport + "&arrival_airport=" + arrival_airport + "&date=" + date + "&time_of_flight=" + time_of_flight,
+          type:'get',
+          dataType:'html',
+          processData:false,
+          success:function (data) {
+              if (data == "not") {
+                  window.location.href = '/sign_in';
+              }
+              else {
+                  alert(data)
+//                    $('.background_shadow').hide();
+                  $("#all_partials").hide()
+
+//                  $("#all_partials").html(data);
+
+
+              }
+          },
+          error:function (data) {
+          }
+      });
+
+
+
+  })
+
+        function cancel_box(){
+            $("#all_partials").hide()
+        }
+</script>

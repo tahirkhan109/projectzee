@@ -1,0 +1,12 @@
+<h1>Welcome Index</h1>
+<%= form_for :details do |f| %>
+<%= text_field_tag :title ,nil,:placeholder => "Title" %><br>
+<%= text_field_tag :description  ,nil,:placeholder => "Description" %><br>
+<%= text_field_tag :first_name ,nil,:placeholder => "First Name" %><br>
+<%= text_field_tag :last_name ,nil,:placeholder => "Last Name" %><br>
+<%= submit_tag "GO", :id => "display_attendee_details" %>
+<% end %>
+
+<script type="text/javascript">
+
+</script>

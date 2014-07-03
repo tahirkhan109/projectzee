@@ -1,0 +1,253 @@
+
+<div class="row-fluid sortable ui-sortable">
+  <div class="box span12">
+    <div class="box-header">
+      <h2><i class="icon-align-justify"></i><span class="break"></span>Show Conference</h2>
+      <div class="box-icon">
+        <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+        <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+        <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+      </div>
+    </div>
+    <div class="box-content">
+
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date & Time</th>
+          <th>Date & Time</th>
+          <th>City</th>
+        </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td>
+  <%= @conference.title %>
+  </td>
+  <td>
+  <%= @conference.start_datetime %>
+  </td>
+  <td>
+  <%= @conference.end_datetime %>
+  </td>
+  <td>
+  <%= @conference.location %>
+  </td>
+</tr>
+        </tbody>
+      </table>
+
+      <%#= link_to "Back To Posts", posts_path, :class => 'btn btn-primary'%>
+      <%#= link_to "Edit Post", edit_post_path, :class => 'btn btn-primary' %>
+
+      <%= link_to "Back",  conferences_path, :class => 'btn btn-primary' %>
+      <%= link_to "Edit", edit_conference_path , :class => 'btn btn-primary' %>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="all_partials" style="display:none;position: fixed; top: 20%; left: 29%; background-color: #FFFFFF; width: 400px; border-color: #000000; border: 5px;z-index: 99999;border-radius:5px;border: 1px solid #ccc">
+
+</div>
+
+
+
+
+
+
+
+<!--<br>-->
+<!--<p>-->
+<!--<%#= "Title:" %>-->
+<%#= @conference.title %>
+  <!--</p>-->
+<!--<p>-->
+<!--<%#= "Date and Time:" %>-->
+<%#= @conference.datetime %>
+  <!--</p>-->
+<!--<p>-->
+  <!--<%#= "Location:" %>-->
+<%#= @conference.location %>
+<!--</p>-->
+<div class="row-fluid sortable ui-sortable">
+<div class="box span6">
+<div class="box-header">
+<h2><i class="icon-align-justify"></i><span class="break"></span>Add Attendee:</h2>
+<div class="box-icon">
+  <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+  <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+  <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+</div>
+</div>
+<div class="box-content">
+<%= render "attendee_details/form" %>
+</div>
+</div>
+<div class="box span6">
+  <!--<h3>Attendees</h3>-->
+  <!--<%#= render @conference.attendee_details %>-->
+  <div class="box-header">
+        <h2><i class="icon-align-justify"></i><span class="break"></span>All Attendees</h2>
+        <div class="box-icon">
+          <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+          <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+          <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+        </div>
+      </div>
+      <div class="box-content">
+        <a class="btn btn-lg btn-info margin10" id="add_flight" onclick="add_flight_detail()"> Flight Detail </a>
+        <a class="btn btn-lg btn-info margin10" id="add_ground" onclick="add_ground_detail()"> Ground Detail </a>
+        <a class="btn btn-lg btn-info margin10" id="add_agenda" onclick="add_agenda_detail()"> Agenda Detail </a>
+        <table class="table table-bordered table-striped table-condensed" id="carrier_table_inner" >
+          <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Delete</th>
+            <th>Select</th>
+          </tr>
+          </thead>
+          <tbody>
+
+
+          <% @conference.attendee_details.each do |a| %>
+              <tr>
+               <td>
+                <%= a.first_name %>
+               </td>
+
+
+                <td>
+                <%= a.last_name %>
+
+                </td>
+                <td>
+                  <% if a.first_name.present? && a.last_name.present? %>
+                  <%= link_to 'Delete', [a.conference,a],
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' }, :class => 'label label-important' %>
+                      <% end %>
+
+                </td>
+                <td>
+                  <% if a.first_name.present? && a.last_name.present? %>
+                      <div class="radio" id="uniform-undefined"><span><input type="radio" value='<%= a.id %>' onclick="select_attendee('<%=a.id%>')" name="optionsRadios1" style="opacity: 1;"></span></div>
+                      <!--<input type="radio" value="option1" name="optionsRadios1" style="opacity: 1;">-->
+                      <% end %>
+                </td>
+              </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+
+      </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  function select_attendee(id)
+  {
+      alert($("#uniform-undefined input[type='radio']:checked").val())
+      alert(id)
+
+//      $("#all_partials").show;
+//      $.ajax({
+//          url:'/welcome/add_popup_flight?id='+ id,
+//          type:'get',
+//          dataType:'html',
+//          processData:false,
+//          success:function (data) {
+//              if (data == "not") {
+//                  window.location.href = '/sign_in';
+//              }
+//              else {
+//                  alert(data)
+////                    $('.background_shadow').hide();
+//                  $("#all_partials").css("display","block");
+//
+//                  $("#all_partials").html(data);
+//
+//
+//              }
+//          },
+//          error:function (data) {
+//          }
+//      });
+
+  }
+
+        function add_flight_detail(){
+            alert($("#uniform-undefined input[type='radio']:checked").val())
+            var id = $("#uniform-undefined input[type='radio']:checked").val()
+            alert(id)
+            if(id == undefined){
+                alert('1')
+                return false;
+            }
+            else {
+                $("#all_partials").show;
+                $.ajax({
+                    url:'/welcome/add_popup_flight?id='+ id,
+                    type:'get',
+                    dataType:'html',
+                    processData:false,
+                    success:function (data) {
+                        if (data == "not") {
+                            window.location.href = '/sign_in';
+                        }
+                        else {
+                            alert(data)
+          //                    $('.background_shadow').hide();
+                            $("#all_partials").css("display","block");
+
+                            $("#all_partials").html(data);
+
+
+                        }
+                    },
+                    error:function (data) {
+                    }
+                });
+            }
+        }
+
+
+        function add_ground_detail(){
+            alert($("#uniform-undefined input[type='radio']:checked").val())
+                        var id = $("#uniform-undefined input[type='radio']:checked").val()
+                        alert(id)
+                        if(id == undefined){
+                            return false;
+                        }
+                        else {
+                            $("#all_partials").show;
+                            $.ajax({
+                                url:'/welcome/add_popup_ground?id='+ id,
+                                type:'get',
+                                dataType:'html',
+                                processData:false,
+                                success:function (data) {
+                                    if (data == "not") {
+                                        window.location.href = '/sign_in';
+                                    }
+                                    else {
+                                        alert(data)
+                      //                    $('.background_shadow').hide();
+                                        $("#all_partials").css("display","block");
+
+                                        $("#all_partials").html(data);
+
+
+                                    }
+                                },
+                                error:function (data) {
+                                }
+                            });
+                        }
+        }
+</script>
