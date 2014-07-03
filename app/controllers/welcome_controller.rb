@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
     #end
   end
 
+
   def add_popup_flight
     @attendee_detail = AttendeeDetail.find(params[:id])
     render :partial => "flight_detail_popup",:locals => {:@attendee_detail => @attendee_detail}
