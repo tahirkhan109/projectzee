@@ -1,4 +1,3 @@
-distancelearningprogram
-=======================
+distancelearning
 
-Manage attendees travel details for distance learning program. 
+distance learning process
