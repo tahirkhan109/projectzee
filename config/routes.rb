@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     collection do
       get "add_popup_flight"
       get "add_popup_ground"
+      get "add_popup_agenda"
       post "create_flight_detail"
       get "add_flight_detail"
       get "add_ground_detail"
+      post "add_agenda_detail"
     end
   end
 

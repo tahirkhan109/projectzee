@@ -1,0 +1,64 @@
+<div class="row-fluid sortable ui-sortable">
+  <div class="box span12">
+    <div class="box-header">
+      <h2><i class="icon-align-justify"></i><span class="break"></span>Add Flight Detail</h2>
+      <div class="box-icon">
+        <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+        <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+        <a class="btn-close" href="#"><i class="icon-remove"></i></a>
+      </div>
+    </div>
+    <div class="box-content">
+      <!--, :url => '/welcome/add_agenda_detail'-->
+<%= form_for :agenda_detail, :url => '/welcome/add_agenda_detail', :html => {:id => 'new_agenda_form',:multipart => true } do |f| %>
+ <p>
+    <b> <%= f.label :attach %> </b><br/>
+    <%= f.file_field :attach %>
+  </p>
+<%= hidden_field_tag :attendee_id, @attendee_detail.id %>
+ <p>
+    <b> <%= f.submit  %> </b><br/>
+  </p>
+<% end %>
+    </div>
+    </div>
+    </div>
+<script type="text/javascript">
+    $("#asdf").click(function(){
+        alert($("#agenda_detail_attach").val())
+    })
+
+
+
+//$('#new_agenda_form').submit(function () {
+//    alert('aaaaaaaaaaa')
+////            if ($('#new_event_form').valid() == true) {
+//                alert(window.location.href)
+//    var location = window.location.href
+//                var postData = $(this).serializeArray();
+//                     alert(postData)
+//                var formURL = $(this).attr("action");
+//    alert(formURL)
+//                $.ajax({
+//                    url: formURL,
+//                    type: 'post',
+//                    data: postData,
+//                    success: function (data) {
+//                        alert(data)
+//                        if (data == "not") {
+//
+////                            window.location.href = '/sign_in';
+//                        }
+//                        else {
+//                            alert(data)
+//                            window.location.href = location
+//
+//                        }
+//                    }
+//                });
+////            }
+//        });
+
+
+
+</script>

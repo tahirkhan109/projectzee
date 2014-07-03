@@ -152,9 +152,8 @@
 <script type="text/javascript">
   function select_attendee(id)
   {
-      alert($("#uniform-undefined input[type='radio']:checked").val())
-      alert(id)
-
+//      alert($("#uniform-undefined input[type='radio']:checked").val())
+//      alert(id)
 //      $("#all_partials").show;
 //      $.ajax({
 //          url:'/welcome/add_popup_flight?id='+ id,
@@ -182,9 +181,8 @@
   }
 
         function add_flight_detail(){
-            alert($("#uniform-undefined input[type='radio']:checked").val())
+//            alert($("#uniform-undefined input[type='radio']:checked").val())
             var id = $("#uniform-undefined input[type='radio']:checked").val()
-            alert(id)
             if(id == undefined){
                 alert('1')
                 return false;
@@ -201,13 +199,8 @@
                             window.location.href = '/sign_in';
                         }
                         else {
-                            alert(data)
-          //                    $('.background_shadow').hide();
                             $("#all_partials").css("display","block");
-
                             $("#all_partials").html(data);
-
-
                         }
                     },
                     error:function (data) {
@@ -215,12 +208,9 @@
                 });
             }
         }
-
-
         function add_ground_detail(){
-            alert($("#uniform-undefined input[type='radio']:checked").val())
+//            alert($("#uniform-undefined input[type='radio']:checked").val())
                         var id = $("#uniform-undefined input[type='radio']:checked").val()
-                        alert(id)
                         if(id == undefined){
                             return false;
                         }
@@ -236,13 +226,35 @@
                                         window.location.href = '/sign_in';
                                     }
                                     else {
-                                        alert(data)
-                      //                    $('.background_shadow').hide();
                                         $("#all_partials").css("display","block");
-
                                         $("#all_partials").html(data);
-
-
+                                    }
+                                },
+                                error:function (data) {
+                                }
+                            });
+                        }
+        }
+        function add_agenda_detail(){
+//            alert($("#uniform-undefined input[type='radio']:checked").val())
+                        var id = $("#uniform-undefined input[type='radio']:checked").val()
+                        if(id == undefined){
+                            return false;
+                        }
+                        else {
+                            $("#all_partials").show;
+                            $.ajax({
+                                url:'/welcome/add_popup_agenda?id='+ id,
+                                type:'get',
+                                dataType:'html',
+                                processData:false,
+                                success:function (data) {
+                                    if (data == "not") {
+                                        window.location.href = '/sign_in';
+                                    }
+                                    else {
+                                        $("#all_partials").css("display","block");
+                                        $("#all_partials").html(data);
                                     }
                                 },
                                 error:function (data) {

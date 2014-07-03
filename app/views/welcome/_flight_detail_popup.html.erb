@@ -9,9 +9,8 @@
       </div>
     </div>
     <div class="box-content">
-   <%= @attendee_detail.id %>
-<%# @flight_detail = FlightDetail.new() %>
-      <%= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
+   <%#= @attendee_detail.id %>
+      <%#= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
 <%= form_for :flight_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
     <%= f.text_field :airline_name,:placeholder => "Airline Name" %>
@@ -41,8 +40,6 @@
         </div>
         </div>
         </div>
-
-<!--<script src="./jquery.datetimepicker.js"></script>-->
 <script type="text/javascript">
   $("#add_flight_detail").click(function(){
       var id = $("#attendee_id").val()
@@ -63,21 +60,12 @@
                   window.location.href = '/sign_in';
               }
               else {
-                  alert(data)
-//                    $('.background_shadow').hide();
                   $("#all_partials").hide()
-
-//                  $("#all_partials").html(data);
-
-
               }
           },
           error:function (data) {
           }
       });
-
-
-
   })
 
         function cancel_box(){

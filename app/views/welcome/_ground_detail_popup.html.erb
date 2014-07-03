@@ -9,30 +9,28 @@
       </div>
     </div>
     <div class="box-content">
-   <%= @attendee_detail.id %>
+   <%#= @attendee_detail.id %>
 <%# @flight_detail = FlightDetail.new() %>
       <%#= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
 <%= form_for :ground_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
-    <%= f.text_field :airline_name,:placeholder => "Airline Name" %>
+    <%= f.text_field :departing_from,:placeholder => "Departing From" %>
       <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
     </p>
     <p>
-    <%= f.text_field :flight_number,:placeholder => "flight number"  %>
+    <%= f.text_field :departure_time,:placeholder => "Departure Time" ,:id => "datetimepicker5" %>
     </p>
     <p>
-    <%= f.text_field :departure_airport,:placeholder => "departure airport"  %>
+    <%= f.text_field :destination,:placeholder => "Destinations"  %>
     </p>
     <p>
-    <%= f.text_field :arrival_airport ,:placeholder => "arrival airport" %>
+    <%= f.text_field :estimated_transit_time,:placeholder => "Estimated Transit Time" %>
     </p>
     <p>
-    <%= f.text_field :date ,:placeholder => "date" %>
+    <%= f.text_field :instructions ,:placeholder => "Instructions" %>
     </p>
-    <p>
-    <%= f.text_field :time_of_flight ,:placeholder => "time of flight" %>
-    </p>
-          <%= f.submit "Save", :id => "add_flight_detail",:class=>"btn btn-lg btn-info margin10" %>
+
+          <%= f.submit "Save", :id => "add_ground_detail",:class=>"btn btn-lg btn-info margin10" %>
           <a class="btn btn-lg btn-info margin10" id="cancel_boxs" onclick="cancel_box()"> Cancel </a>
 <% end %>
         </div>
@@ -41,16 +39,21 @@
 
 
 <script type="text/javascript">
-  $("#add_flight_detail").click(function(){
+    $('#datetimepicker5').datetimepicker({
+  	datepicker:false,
+  	format:'H:i',
+  	step:5
+  });
+
+  $("#add_ground_detail").click(function(){
       var id = $("#attendee_id").val()
-      var airline_name = $("#flight_detail_airline_name").val()
-      var flight_number = $("#flight_detail_flight_number").val()
-      var departure_airport = $("#flight_detail_departure_airport").val()
-      var arrival_airport = $("#flight_detail_arrival_airport").val()
-      var date = $("#flight_detail_date").val()
-      var time_of_flight = $("#flight_detail_time_of_flight").val()
+      var departing_from = $("#ground_detail_departing_from").val()
+      var departure_time = $("#datetimepicker5").val()
+      var destination = $("#ground_detail_destination").val()
+      var estimated_transit_time = $("#ground_detail_estimated_transit_time").val()
+      var instructions = $("#ground_detail_instructions").val()
       $.ajax({
-          url:'/welcome/add_flight_detail?id='+ id + "&airline_name=" + airline_name + "&flight_number=" + flight_number + "&departure_airport=" + departure_airport + "&arrival_airport=" + arrival_airport + "&date=" + date + "&time_of_flight=" + time_of_flight,
+          url:'/welcome/add_ground_detail?id='+ id + "&departing_from=" + departing_from + "&departure_time=" + departure_time + "&destination=" + destination + "&estimated_transit_time=" + estimated_transit_time + "&instructions=" + instructions ,
           type:'get',
           dataType:'html',
           processData:false,
@@ -59,24 +62,19 @@
                   window.location.href = '/sign_in';
               }
               else {
-                  alert(data)
-//                    $('.background_shadow').hide();
                   $("#all_partials").hide()
-
-//                  $("#all_partials").html(data);
-
-
               }
           },
           error:function (data) {
           }
       });
-
-
-
   })
-
         function cancel_box(){
             $("#all_partials").hide()
         }
 </script>
+<style>
+  .xdsoft_datetimepicker{
+      z-index: 999999999999;
+  }
+</style>

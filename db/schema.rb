@@ -14,6 +14,10 @@
 ActiveRecord::Schema.define(version: 20140703081212) do
 
   create_table "agenda_details", force: true do |t|
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "attendee_detail_id"
