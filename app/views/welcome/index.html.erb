@@ -1,5 +1,5 @@
 <h1>Welcome Index</h1>
-<%= form_for :details do |f| %>
+<%= form_for :details ,:html => {:onsubmit => "return false"} do  |f| %>
 <%= text_field_tag :title ,nil,:placeholder => "Title" %><br>
 <%= text_field_tag :description  ,nil,:placeholder => "Description" %><br>
 <%= text_field_tag :first_name ,nil,:placeholder => "First Name" %><br>

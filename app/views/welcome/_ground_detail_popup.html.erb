@@ -15,20 +15,35 @@
       <%#= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
 <%= form_for :ground_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
-    <%= f.text_field :departing_from,:placeholder => "Departing From" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Departing From:</strong>
+            </div>
+    <%= f.text_field :departing_from,:placeholder => "" %>
       <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
     </p>
     <p>
-    <%= f.text_field :departure_time,:placeholder => "Departure Time" ,:id => "datetimepicker5" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Departure Time:</strong>
+            </div>
+    <%= f.text_field :departure_time,:placeholder => "" ,:id => "datetimepicker5" %>
     </p>
     <p>
-    <%= f.text_field :destination,:placeholder => "Destinations"  %>
+          <div style="width:120px;display: inline-block">
+      <strong>Destinations:</strong>
+            </div>
+    <%= f.text_field :destination,:placeholder => ""  %>
     </p>
     <p>
-    <%= f.text_field :estimated_transit_time,:placeholder => "Estimated Transit Time" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Estimated Transit Time:</strong>
+            </div>
+    <%= f.text_field :estimated_transit_time,:placeholder => "" %>
     </p>
     <p>
-    <%= f.text_field :instructions ,:placeholder => "Instructions" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Instructions:</strong>
+            </div>
+    <%= f.text_field :instructions ,:placeholder => "" %>
     </p>
 
           <%= f.submit "Save", :id => "add_ground_detail",:class=>"btn btn-lg btn-info margin10" %>

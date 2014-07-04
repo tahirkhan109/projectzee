@@ -13,26 +13,47 @@
       <% @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
 <%= form_for :flight_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
-    <%= f.text_field :airline_name,:placeholder => "Airline Name" %>
+      <div style="width:120px;display: inline-block">
+      <strong>Airline Name:</strong>
+      </div>
+        <%= f.text_field :airline_name %>
       <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
     </p>
     <p>
-    <%= f.text_field :flight_number,:placeholder => "Flight Number"  %>
+          <div style="width:120px;display: inline-block">
+      <strong>Flight Number:</strong>
+            </div>
+    <%= f.text_field :flight_number %>
     </p>
     <p>
-    <%= f.text_field :departuring_from,:placeholder => "Departure From"  %>
+          <div style="width:120px;display: inline-block">
+      <strong>Departure From:</strong>
+            </div>
+    <%= f.text_field :departuring_from  %>
     </p>
     <p>
-    <%= f.text_field :departure_time,:placeholder => "Departure Time" ,:id => "datetimepicker3" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Departure Time:</strong>
+            </div>
+    <%= f.text_field :departure_time ,:id => "datetimepicker3" %>
     </p>
     <p>
-    <%= f.text_field :arriving_at ,:placeholder => "Arrival At"  %>
+          <div style="width:120px;display: inline-block">
+      <strong>Arrival At:</strong>
+            </div>
+    <%= f.text_field :arriving_at  %>
     </p>
     <p>
-    <%= f.text_field :arriving_time ,:placeholder => "Arrival Time" ,:id => "datetimepicker4"%>
+          <div style="width:120px;display: inline-block">
+      <strong>Arrival Time:</strong>
+            </div>
+    <%= f.text_field :arriving_time  ,:id => "datetimepicker4"%>
     </p>
     <p>
-    <%= f.text_field :connections ,:placeholder => "Connections" %>
+          <div style="width:120px;display: inline-block">
+      <strong>Connections:</strong>
+            </div>
+    <%= f.text_field :connections  %>
     </p>
           <%= f.submit "Save", :id => "add_flight_detail",:class=>"btn btn-lg btn-info margin10" %>
           <a class="btn btn-lg btn-info margin10" id="cancel_boxs" onclick="cancel_box()"> Cancel </a>
