@@ -12,6 +12,8 @@ end
     @conference = Conference.new(conf_params)
     if @conference.save
       redirect_to @conference
+    else
+      render 'new'
     end
   end
   def edit

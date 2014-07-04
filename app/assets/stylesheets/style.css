@@ -2345,5 +2345,31 @@ footer p {
 =================================================================== */	
 
 .icon-red {
-  background-image: url("../img/glyphicons-halflings-red.png");
+  background-image: url("assets/glyphicons-halflings-red.png");
+}
+.hudmsg {
+    width: 160px;
+    padding: 20px;
+    color: #eee;
+    background: url(../images/tt.png) 0 0 repeat;
+    background: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 235px;
+    left: 50%;
+    margin-left: -100px;
+    z-index: 1000;
+    text-shadow: 0 1px 1px #000;
+
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.hudmsg img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
 }

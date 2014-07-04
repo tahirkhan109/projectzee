@@ -17,3 +17,23 @@
 //= require jquery.dataTables.min
 //= require jquery.cleditor.min
 //= require_tree .
+
+
+function hudMsg(type, message, timeOut) {
+        $('.hudmsg').remove();
+        if (!timeOut) {
+            timeOut = 3000;
+        }
+        var timeId = new Date().getTime();
+        if (type != '' && message != '') {
+            $('<div style="z-index: 99999;" class="hudmsg ' + type + '" id="msg_' + timeId + '"><img src="/assets/msg_' + type + '.png" alt="" />' + message + '</div>').hide().appendTo('body').fadeIn();
+            var timer = setTimeout(
+                    function () {
+                        $('.hudmsg#msg_' + timeId + '').fadeOut('slow', function () {
+                            $(this).remove();
+                        });
+                    }, timeOut
+            );
+        }
+    }
+
