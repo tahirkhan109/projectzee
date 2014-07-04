@@ -1,9 +1,9 @@
 <div class="row-fluid sortable ui-sortable">
-  <div class="box span12">
+  <!--<div class="box span12">-->
     <div class="box-header">
       <h2><i class="icon-align-justify"></i><span class="break"></span>Add Flight Detail</h2>
       <div class="box-icon">
-        <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+        <a class="btn-setting" href="#"><button aria-hidden="true" data-dismiss="modal" class="close" type="button" onclick="cancel_box()">×</button></a>
         <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
         <a class="btn-close" href="#"><i class="icon-remove"></i></a>
       </div>
@@ -11,6 +11,7 @@
     <div class="box-content">
    <%#= @attendee_detail.id %>
 <%# @flight_detail = FlightDetail.new() %>
+      <% @ground_detail = GroundDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
       <%#= @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
 <%= form_for :ground_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
@@ -34,16 +35,11 @@
           <a class="btn btn-lg btn-info margin10" id="cancel_boxs" onclick="cancel_box()"> Cancel </a>
 <% end %>
         </div>
-        </div>
+        <!--</div>-->
         </div>
 
 
 <script type="text/javascript">
-    $('#datetimepicker5').datetimepicker({
-  	datepicker:false,
-  	format:'H:i',
-  	step:5
-  });
 
   $("#add_ground_detail").click(function(){
       var id = $("#attendee_id").val()
@@ -72,6 +68,12 @@
         function cancel_box(){
             $("#all_partials").hide()
         }
+  $('#datetimepicker5').datetimepicker({
+	datepicker:false,
+	format:'H:i',
+	step:5
+});
+
 </script>
 <style>
   .xdsoft_datetimepicker{
