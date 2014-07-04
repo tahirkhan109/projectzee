@@ -64,7 +64,7 @@
       var estimated_transit_time = $("#ground_detail_estimated_transit_time").val()
       var instructions = $("#ground_detail_instructions").val()
       if (departing_from == "" || departure_time == "" || destination == "" || estimated_transit_time == ""){
-          hudMsg('in', 'Please Add All Required Fields.');
+          alert('Please Add All Required Fields.');
           return false;
       }
       $.ajax({

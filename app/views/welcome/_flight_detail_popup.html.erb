@@ -73,7 +73,7 @@
       var arrival_time = $("#datetimepicker4").val()
       var connections = $("#flight_detail_connections").val()
       if (airline_name == "" || flight_number == "" || departure_airport =="" || departure_time =="" || arrival_airport == "" || arrival_time == ""){
-      hudMsg('in', 'Please Add All Required Fields.');
+      alert('Please Add All Required Fields.');
       return false;
       }
       $.ajax({
