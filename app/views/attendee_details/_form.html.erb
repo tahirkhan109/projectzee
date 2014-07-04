@@ -1,19 +1,19 @@
 <%= form_for ([@conference, @conference.attendee_details.build]) do |f|%>
     <p>
       <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, :placeholder => "First Name" %>
     </p>
     <p>
       <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, :placeholder => "Last Name" %>
     </p>
     <p>
       <%= f.label :city %>
-      <%= f.text_field :city %>
+      <%= f.text_field :city , :placeholder => "City"%>
     </p>
     <p>
       <%= f.label :state %>
-      <%= f.text_field :state %>
+      <%= f.text_field :state , :placeholder => "State"%>
     </p>
 
     <p>
