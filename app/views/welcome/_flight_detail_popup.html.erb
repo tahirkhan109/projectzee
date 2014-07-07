@@ -27,6 +27,12 @@
     </p>
     <p>
           <div style="width:120px;display: inline-block">
+      <strong>Record Locator:*</strong>
+            </div>
+    <%= f.text_field :record_locator %>
+    </p>
+    <p>
+          <div style="width:120px;display: inline-block">
       <strong>Departure From:*</strong>
             </div>
     <%= f.text_field :departuring_from  %>
@@ -72,13 +78,14 @@
       var arrival_airport = $("#flight_detail_arriving_at").val()
       var arrival_time = $("#datetimepicker4").val()
       var connections = $("#flight_detail_connections").val()
-      if (airline_name == "" || flight_number == "" || departure_airport =="" || departure_time =="" || arrival_airport == "" || arrival_time == ""){
+      var record_locator  = $("#flight_detail_record_locator").val()
+      if (airline_name == "" || flight_number == "" || departure_airport =="" || departure_time =="" || arrival_airport == "" || arrival_time == "" || record_locator == ""){
           hudMsg('info', "Please Add All Required Fields.")
 //      alert('Please Add All Required Fields.');
       return false;
       }
       $.ajax({
-          url:'/welcome/add_flight_detail?id='+ id + "&airline_name=" + airline_name + "&flight_number=" + flight_number + "&departure_airport=" + departure_airport +"&departure_time=" + departure_time + "&arrival_airport=" + arrival_airport + "&arrival_time=" +arrival_time + "&connections=" + connections,
+          url:'/welcome/add_flight_detail?id='+ id + "&airline_name=" + airline_name + "&flight_number=" + flight_number + "&departure_airport=" + departure_airport +"&departure_time=" + departure_time + "&arrival_airport=" + arrival_airport + "&arrival_time=" +arrival_time + "&connections=" + connections + "&record_locator=" + record_locator,
           type:'get',
           dataType:'html',
           processData:false,
