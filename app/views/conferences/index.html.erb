@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="box-content">
-      <table class="table table-bordered table-striped table-condensed" id="carrier_table_inner1">
+      <table class="table table-bordered table-striped table-condensed" id="Conf_table" class="conf_table">
         <thead>
         <tr>
           <th>Title: </th>
@@ -64,20 +64,21 @@
     </div>
   </div>
 </div>
+  <div style="margin:0px 0px 35px 0px">
   <%= link_to "New Conference",new_conference_path, :class => 'btn btn-primary' %>
+    </div>
 </div>
 <script type="text/javascript">
-    $('#carrier_table_inner1').dataTable({
-        "bPaginate":true,
-        "bSort":true,
-        "asDataSearch":true,
-        "bAutoWidth":false,
+  $(document).ready(function(){
+      $('#Conf_table').dataTable({
+          "bPaginate":true,
+          "bSort":true,
+          "asDataSearch":true,
+          "bAutoWidth":false
 
-        "aoColumnDefs":[
-            { 'bSortable':false, 'aTargets':[ ] }
-        ]
+      });
 
-    });
+  })
 
     //    $(document).ready(function () {
     //        Checks.init();

@@ -13,7 +13,7 @@
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-<p class="navbar-text pull-right">
+<p class="navbar-text pull-right" style="margin: 0px 40px 0px 0px">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
