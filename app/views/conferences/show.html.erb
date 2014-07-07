@@ -2,7 +2,7 @@
 <div class="row-fluid sortable ui-sortable">
   <div class="box span12">
     <div class="box-header">
-      <h2><i class="icon-align-justify"></i><span class="break"></span>Show Conference</h2>
+      <h2><i class="icon-align-justify"></i>Show Conference</h2>
       <div class="box-icon">
         <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
         <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
@@ -14,10 +14,10 @@
       <table class="table table-bordered table-striped table-condensed">
         <thead>
         <tr>
-          <th>Title: </th>
-          <th>Start Date & Time: </th>
-          <th>End Date & Time: </th>
-          <th>Location: </th>
+          <th>Title</th>
+          <th>Start Date & Time</th>
+          <th>End Date & Time</th>
+          <th>Location</th>
         </tr>
         </thead>
         <tbody>
@@ -74,9 +74,9 @@
 <%#= @conference.location %>
 <!--</p>-->
 <div class="row-fluid sortable ui-sortable">
-<div class="box span6">
+<div class="box span4">
 <div class="box-header">
-<h2><i class="icon-align-justify"></i><span class="break"></span>Add Attendee:</h2>
+<h2><i class="icon-align-justify"></i>Add Attendee:</h2>
 <div class="box-icon">
   <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
   <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
@@ -87,11 +87,11 @@
 <%= render "attendee_details/form" %>
 </div>
 </div>
-<div class="box span6">
+<div class="box span8">
   <!--<h3>Attendees</h3>-->
   <!--<%#= render @conference.attendee_details %>-->
   <div class="box-header">
-        <h2><i class="icon-align-justify"></i><span class="break"></span>All Attendees</h2>
+        <h2><i class="icon-align-justify"></i></span>All Attendees</h2>
         <div class="box-icon">
           <a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
           <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
@@ -99,9 +99,11 @@
         </div>
       </div>
       <div class="box-content">
+        <div style="margin:10px 0px 20px 0px">
         <a class="btn btn-lg btn-info margin10" id="add_flight" onclick="add_flight_detail()"> Flight Detail </a>
         <a class="btn btn-lg btn-info margin10" id="add_ground" onclick="add_ground_detail()"> Ground Detail </a>
         <a class="btn btn-lg btn-info margin10" id="add_agenda" onclick="add_agenda_detail()"> Agenda Detail </a>
+        </div>
         <table class="table table-bordered table-striped table-condensed" id="carrier_table_inner" >
           <thead>
           <tr>
@@ -184,6 +186,8 @@
 //            alert($("#uniform-undefined input[type='radio']:checked").val())
             var id = $("#uniform-undefined input[type='radio']:checked").val()
             if(id == undefined){
+
+            hudMsg('info', "Please Select A Attendee From List")
                 return false;
             }
             else {
@@ -211,6 +215,7 @@
 //            alert($("#uniform-undefined input[type='radio']:checked").val())
                         var id = $("#uniform-undefined input[type='radio']:checked").val()
                         if(id == undefined){
+                            hudMsg('info', "Please Select A Attendee From List")
                             return false;
                         }
                         else {
@@ -238,6 +243,7 @@
 //            alert($("#uniform-undefined input[type='radio']:checked").val())
                         var id = $("#uniform-undefined input[type='radio']:checked").val()
                         if(id == undefined){
+                            hudMsg('info', "Please Select A Attendee From List")
                             return false;
                         }
                         else {
@@ -261,4 +267,21 @@
                             });
                         }
         }
+    $(document).ready(function(){
+
+        $('#carrier_table_inner').dataTable({
+            "bPaginate":true,
+            "bSort":true,
+            "asDataSearch":true,
+            "bAutoWidth":false
+
+        });
+        $("#carrier_table_inner_length").hide()
+    })
+
+
+      //    $(document).ready(function () {
+      //        Checks.init();
+      //    })
+
 </script>

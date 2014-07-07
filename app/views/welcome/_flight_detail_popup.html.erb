@@ -1,7 +1,7 @@
 <div class="row-fluid sortable ui-sortable">
   <!--<div class="box span12">-->
     <div class="box-header">
-      <h2><i class="icon-align-justify"></i><span class="break"></span>Add Flight Detail</h2>
+      <h2><i class="icon-align-justify"></i>Add Flight Detail</h2>
       <div class="box-icon">
         <a class="btn-setting" href="#"><button aria-hidden="true" data-dismiss="modal" class="close" type="button" onclick="cancel_box()">×</button></a>
         <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
@@ -73,7 +73,8 @@
       var arrival_time = $("#datetimepicker4").val()
       var connections = $("#flight_detail_connections").val()
       if (airline_name == "" || flight_number == "" || departure_airport =="" || departure_time =="" || arrival_airport == "" || arrival_time == ""){
-      alert('Please Add All Required Fields.');
+          hudMsg('info', "Please Add All Required Fields.")
+//      alert('Please Add All Required Fields.');
       return false;
       }
       $.ajax({

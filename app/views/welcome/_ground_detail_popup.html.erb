@@ -1,7 +1,7 @@
 <div class="row-fluid sortable ui-sortable">
   <!--<div class="box span12">-->
     <div class="box-header">
-      <h2><i class="icon-align-justify"></i><span class="break"></span>Add Ground Detail</h2>
+      <h2><i class="icon-align-justify"></i>Add Ground Detail</h2>
       <div class="box-icon">
         <a class="btn-setting" href="#"><button aria-hidden="true" data-dismiss="modal" class="close" type="button" onclick="cancel_box()">×</button></a>
         <a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
@@ -64,7 +64,8 @@
       var estimated_transit_time = $("#ground_detail_estimated_transit_time").val()
       var instructions = $("#ground_detail_instructions").val()
       if (departing_from == "" || departure_time == "" || destination == "" || estimated_transit_time == ""){
-          alert('Please Add All Required Fields.');
+          hudMsg('info', "Please Add All Required Fields.")
+//          alert('Please Add All Required Fields.');
           return false;
       }
       $.ajax({
