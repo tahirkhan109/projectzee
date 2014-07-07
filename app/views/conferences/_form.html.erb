@@ -37,8 +37,8 @@
       </div>
 <script src="./jquery.datetimepicker.js"></script>
 <script>
-$('#datetimepicker').datetimepicker();
-$('#datetimepicker1').datetimepicker();
+$('#datetimepicker').datetimepicker({ minDate: 0 });
+$('#datetimepicker1').datetimepicker({ minDate: 0 });
 var logic = function( currentDateTime ){
 	if( currentDateTime.getDay()==6 ){
 		this.setOptions({

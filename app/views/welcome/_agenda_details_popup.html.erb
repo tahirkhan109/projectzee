@@ -12,7 +12,9 @@
       <!--, :url => '/welcome/add_agenda_detail'-->
       <% @agenda_detail = AgendaDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
       <% if @agenda_detail.present? %>
-          <b><%= @agenda_detail.attach_file_name %></b>
+          <b>
+            <%= link_to @agenda_detail.attach_file_name,@agenda_detail.attach.url %>
+          </b>
           <% else %>
           <b><%= "No File Selected" %></b>
           <% end %>
