@@ -1,6 +1,34 @@
 class AttendeeDetailsController < ApplicationController
 
+  before_filter :check_user, :only => [:attendee_flight_detail, :attendee_ground_detail, :attendee_agenda_detail,:attendee_home]
+
+  def check_user
+    @attendee = AttendeeDetail.find_by_id(session[:attendee_id])
+    puts "CCC", @attendee.id, params[:id].to_i
+    if @attendee.id == params[:id].to_i
+
+    else
+      redirect_to "/"
+    end
+  end
+
   def show
+  end
+
+  def attendee_home
+
+  end
+
+  def attendee_flight_detail
+
+  end
+
+  def attendee_ground_detail
+
+  end
+
+  def attendee_agenda_detail
+
   end
 
 
@@ -9,15 +37,27 @@ class AttendeeDetailsController < ApplicationController
     @attendee_detail = @conference.attendee_details.create(params_attendee_detail)
     redirect_to conference_path(@conference)
   end
+
   def destroy
     @conference = Conference.find(params[:conference_id])
     @attendee_detail = @conference.attendee_details.find(params[:id])
     @attendee_detail.destroy
     redirect_to @conference
   end
+
+  def display_user_data
+    @attendee = AttendeeDetail.where(:first_name => params[:attendee][:firstname].capitalize, :last_name => params[:attendee][:lastname].capitalize).first
+    if @attendee.present?
+      session[:attendee_id] = @attendee.id
+      redirect_to "/attendee_details/attendee_home?id=#{@attendee.id}"
+    else
+      flash[:error] = 'No Information Against This User'
+      redirect_to "/"
+    end
+  end
 end
 private
 def params_attendee_detail
 
-  params[:attendee_detail].permit(:first_name,:last_name,:city,:state)
+  params[:attendee_detail].permit(:first_name, :last_name, :city, :state)
 end

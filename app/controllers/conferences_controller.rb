@@ -1,4 +1,5 @@
 class ConferencesController < ApplicationController
+  before_action :authenticate_user!
   def index
   @conferences = Conference.all
   end

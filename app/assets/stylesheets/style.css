@@ -30,7 +30,7 @@
 =================================================================== */
 
 body {
-	background: url(../img/bg.jpg) repeat-y top right, 
+	background: url(../img/bg.jpg) repeat-y top right,
 				url(../img/dbg.jpg) repeat top left;
 	color: #646464;
 	border: none;
@@ -322,7 +322,7 @@ h6 {
 
 
 .box-header {
-	height: 20px;
+	height: 40px;
   	border: 1px solid #ddd;
 	margin-bottom: -1px;
   	padding: 10px;

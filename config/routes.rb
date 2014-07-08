@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   get "programmer/index"
+  get "attendee_details/attendee_home"
+  get "attendee_details/attendee_flight_detail"
+  get "attendee_details/attendee_ground_detail"
+  get "attendee_details/attendee_agenda_detail"
+  post "attendee_details/display_user_data"
 
   get "admin/index"
   get "super_admin/index"
   resources :conferences do
     resources :attendee_details do
       collection do
-        #get "add_popup_flight"
+
+
       end
 
     #resources :flight_detail

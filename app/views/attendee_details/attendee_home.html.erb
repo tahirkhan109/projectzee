@@ -1,0 +1,30 @@
+     <!--<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>-->
+<div class="DLP">
+            <div class="dlp_in t_bg_colr">
+            	<div class="wrapper">
+                	<div class="w_100">
+                    	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
+                        <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
+                    </div><!--w_100-->
+                </div><!--wrapper ends-->
+            </div><!--dlp_in t_bg_colr-->
+            <div class="dlp_box_in">
+            	<div class="wrapper">
+                    <h3>WELCOME</h3>
+                  <%#= params[:id]%>
+                  <% @attendee = AttendeeDetail.find(params[:id]) %>
+                    <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
+                    <div class="w_100 t_boxes">
+                        <a href="/attendee_details/attendee_flight_detail?id=<%= @attendee.id %>"><img src="/assets/plane.png"><span class="span01">flight</span></a>
+                        <a href="/attendee_details/attendee_ground_detail?id=<%= @attendee.id %>"><img src="/assets/car.png"><span class="span02">transportation</span></a>
+                        <a href="/attendee_details/attendee_agenda_detail?id=<%= @attendee.id %>"><img src="/assets/agenda-2.png"><span class="span03">agenda</span></a>
+                    </div><!--w_100-->
+                    <div class="logout_btn w_100">
+                    	<a href="/">log out</a>
+                        <p>Powered by:DLP Innovation</p>
+                        <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
+                    </div><!--login_btn -->
+                </div><!--wrapper ends-->
+            </div><!--dlp_box_in-->
+        </div><!--DLP-->
+
