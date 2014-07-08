@@ -18,7 +18,7 @@
 //= require jquery.cleditor.min
 //= require_tree .
 
-
+setTimeout("$('#flash_notices').html(' ');", 5000);
 function hudMsg(type, message, timeOut) {
         $('.hudmsg').remove();
         if (!timeOut) {
