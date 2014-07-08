@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   #before_action :authenticate_user!
+  require 'csv'
   def index
     #if current_user && current_user.super_admin?
     #redirect_to :controller => "super_admin" , :action => "new"
@@ -47,7 +48,9 @@ class WelcomeController < ApplicationController
     @agenda_detail = AgendaDetail.where(:attendee_detail_id => params[:attendee_id]).first
     if @agenda_detail.present?
       @agenda_detail.update_attributes(pic_params)
-      render :text => "ok"
+      attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
+      @conference = Conference.find(attendee.conference_id)
+      redirect_to @conference
     else
       @agenda_detail = AgendaDetail.new(pic_params)
       @agenda_detail.save
@@ -58,9 +61,67 @@ class WelcomeController < ApplicationController
       render :text => "not"
       end
   end
+
+  def add_csv_data
+        puts "1111111111111111111111111111111",params.inspect
+    file = AgendaDetail.new(pic_params)
+    puts "............................  .....",file.inspect
+    insert = []
+    CSV.foreach(params[:agenda_detail][:attach].path, headers: true) do |row,index|
+      #if (row["first_name"].present? &&  row["last_name"].present?)
+        if check_duplicate(id,row["first_name"],row["last_name"])
+        @attendee = AttendeeDetail.new(:first_name => row["first_name"], :last_name => row["last_name"], :city => row["city"],:state => row["state"],:conference_id => "1")
+        if @attendee.save
+        @flight_detail = FlightDetail.create(:airline_name => row["airline_name"],:flight_number => row["flight_number"],:departuring_from => row["departing_from"],:departure_time => row["departure_time"],:arriving_at => row["arriving_at"],:arriving_time => row["arriving_time"],:connections => row["connections"],:attendee_detail_id => @attendee.id)
+        @ground_detail = GroundDetail.create(:departing_from => row["departing_from"],:departure_time => row["departure_time"],:destination => row["destination"],:estimated_transit_time => row["estimated_transit_time"],:instructions => row["instructions"],:attendee_detail_id => @attendee.id)
+        end
+        puts "//////////////////",row.inspect
+        puts "//////////////////",row["user_id"]
+        puts "//////////////////",row["first_name"]
+        puts "//////////////////",row["last_name"]
+        puts "//////////////////",row["city"]
+        puts "//////////////////",row["state"]
+        puts "//////////////////",row["airline_name"]
+        puts "//////////////////",row["flight_number"]
+        puts "//////////////////",row["record_locator"]
+        puts "//////////////////",row["departing_from"]
+        puts "//////////////////",row["departure_time"]
+        puts "//////////////////",row["arriving_at"]
+        puts "//////////////////",row["arriving_time"]
+        puts "//////////////////",row["connections"]
+        puts "//////////////////",row["departing_from"]
+        puts "//////////////////",row["departure_time"]
+        puts "//////////////////",row["destination"]
+        puts "//////////////////",row["estimated_transit_time"]
+        puts "//////////////////",row["instructions"]
+        render :text => "OK"
+        #end
+      else
+        puts "00000000000000000000000000000000000000000",row
+        insert << row
+        puts "***************************************",insert.inspect
+        render :text => "Not OK"
+
+      end
+    end
+
+  end
   private
   def pic_params
     params[:agenda_detail].permit(:attach)# (:pic_file_name,:pic_content_type,:pic_file_size)
   end
+
+  def check_duplicate(id,first_name,last_name)
+
+    if first_name.present? && last_name.present?
+    attendee = AttendeeDetail.where(:conference_id => "1",:first_name => first_name, :last_name => last_name).first
+
+  return true if attendee.blank?
+    return false if attendee.present?
+    else
+      return false
+    end
+  end
+
 
 end
