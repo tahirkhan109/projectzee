@@ -1,6 +1,6 @@
 class AttendeeDetailsController < ApplicationController
 
-  before_filter :check_user, :only => [:attendee_flight_detail, :attendee_ground_detail, :attendee_agenda_detail,:attendee_home]
+  #before_filter :check_user, :only => [:attendee_flight_detail, :attendee_ground_detail, :attendee_agenda_detail,:attendee_home]
 
   def check_user
     @attendee = AttendeeDetail.find_by_id(session[:attendee_id])
