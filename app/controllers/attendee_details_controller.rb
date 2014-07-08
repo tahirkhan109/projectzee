@@ -50,14 +50,16 @@ class AttendeeDetailsController < ApplicationController
 
   def display_user_data
     puts "000000000000000000000000000000000",params.inspect
-    @attendee = AttendeeDetail.where(:first_name => params[:attendee][:firstname].capitalize, :last_name => params[:attendee][:lastname].capitalize).first
+    puts "000000000000000000000000000000000",params[:attendee][:firstname].upcase
+    puts "000000000000000000000000000000000",params[:attendee][:lastname].upcase
+    @attendee = AttendeeDetail.where(:first_name => params[:attendee][:firstname].upcase, :last_name => params[:attendee][:lastname].upcase).first
     puts "111111111111111111111111111111111",@attendee.inspect
     if @attendee.present?
       session[:attendee_id] = @attendee.id
       redirect_to "/attendee_details/attendee_home?id=#{@attendee.id}"
     else
       flash[:error] = 'No Information Against This User'
-      redirect_to "/attendee_details/attendee_home"
+      redirect_to "/"
     end
     puts "222222222222222222222222222222222",session[:attendee_id].inspect
   end
