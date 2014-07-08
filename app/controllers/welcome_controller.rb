@@ -50,15 +50,22 @@ class WelcomeController < ApplicationController
       @agenda_detail.update_attributes(pic_params)
       attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
       @conference = Conference.find(attendee.conference_id)
+      flash[:success] = 'Your Uploaded File Has Been Updated SuccessFully. . .'
       redirect_to @conference
     else
       @agenda_detail = AgendaDetail.new(pic_params)
-      @agenda_detail.save
+      if @agenda_detail.save
       @agenda_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
-        render :text => "ok"
+      attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
+      @conference = Conference.find(attendee.conference_id)
+      flash[:success] = 'Your File Has Been Uploaded SuccessFully. . .'
+      redirect_to @conference
+        end
       end
     else
-      render :text => "not"
+      flash[:error] = 'Trying To Upload Invalid File Formate'
+      redirect_to conferences_path
+      #render :text => "Invalid Formate"
       end
   end
 
