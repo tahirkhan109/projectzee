@@ -57,7 +57,7 @@ class AttendeeDetailsController < ApplicationController
       redirect_to "/attendee_details/attendee_home?id=#{@attendee.id}"
     else
       flash[:error] = 'No Information Against This User'
-      redirect_to "/"
+      redirect_to "/attendee_details/attendee_home"
     end
     puts "222222222222222222222222222222222",session[:attendee_id].inspect
   end
