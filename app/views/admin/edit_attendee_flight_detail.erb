@@ -1,0 +1,110 @@
+<!--<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>-->
+<div class="DLP">
+<div class="dlp_in t_bg_colr">
+	<div class="wrapper">
+    	<div class="w_100">
+        	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
+            <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
+        </div><!--w_100-->
+    </div><!--wrapper ends-->
+</div><!--dlp_in t_bg_colr-->
+<div class="dlp_box_in">
+	<div class="wrapper">
+        <h3>FLIGHT DETAILS FOR</h3>
+      <%#= params[:id]%>
+      <% @attendee = AttendeeDetail.find_by_id(params[:id]) %>
+      <% @attendee.id %>
+      <% @attendee.flight_detail.inspect %>
+      <% @flight_detail = FlightDetail.where(:attendee_detail_id => @attendee.id).first %>
+      <% if @flight_detail.blank? %>
+      <% @flight_detail = FlightDetail.new() %>
+          <% end %>
+
+      <p><%= @attendee.first_name + " " + @attendee.last_name %></p>
+        <div class="trans_box">
+
+          <h2 style="display: inline-block">Return Flight Details</h2>
+          <%= form_for @flight_detail, :url => "/attendee_details/edit_flight_detail" do |f| %>
+              <p>Departure Airport:</p>
+              <%= f.text_field :departuring_from ,:placeholder => "Departure Airport" %>
+              <p>Airline:</p>
+             <%= f.text_field :airline_name ,:placeholder => "Airline"%>
+              <%= hidden_field_tag :attendee_id, @attendee.id %>
+              <p>Flight Number:</p>
+             <%= f.text_field :flight_number ,:placeholder => "Flight Number"%>
+              <p>Departure Time:</p>
+             <%= f.text_field :departure_time ,:placeholder => "Departure Time"%>
+              <p>Record Locator:</p>
+             <%= f.text_field :record_locator ,:placeholder => "Record Locator"%>
+              <p>Destination Airport:</p>
+             <%= f.text_field :arriving_at ,:placeholder => "Destination Airport"%>
+              <p>Arriving Time:</p>
+             <%= f.text_field :arriving_time ,:placeholder => "Arriving Time"%>
+              <p>Connections:</p>
+             <%= f.text_field :connections ,:placeholder => "Connections"%>
+              <%= f.submit "Submit", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;width: 85px;" %>
+              <% end %>
+
+            <h2>Need your boarding pass printed for you?</h2>
+            <div class="w_100 y_no">
+            	<a class="yes" href="#" onclick="display_message(<%= @attendee.id %>)">Yes</a>
+                <a href="#" onclick="hide_message(<%= @attendee.id %>)">No</a>
+            </div><!--w_100-->
+          <div id="boarding_pass" style="display:none">
+          <h6>Thank you, you can pick up your boarding pass at the DLP booth at the end of the conference.</h6>
+          </div>
+        </div><!--trans_box-->
+        <div class="logout_btn w_100">
+        	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>">Back</a>
+            <!--<a href="/">Log Out</a>-->
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <p>Powered by:DLP Innovation</p>
+            <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
+        </div><!--login_btn -->
+    </div><!--wrapper ends-->
+</div><!--dlp_box_in-->
+</div><!--DLP-->
+<script type="text/javascript">
+function display_message(id){
+$("#boarding_pass").show()
+$(".yes").css("background","green");
+$.ajax({
+url:'/welcome/add_boarding_detail?id=' + id,
+type:'get',
+dataType:'html',
+processData:false,
+success:function (data) {
+  if (data == "not") {
+      window.location.href = '/sign_in';
+  }
+  else {
+
+  }
+},
+error:function (data) {
+}
+});
+
+}
+function hide_message(id){
+$("#boarding_pass").hide()
+$(".yes").css("background","linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent");
+$.ajax({
+url:'/welcome/del_boarding_detail?id=' + id,
+type:'get',
+dataType:'html',
+processData:false,
+success:function (data) {
+  if (data == "not") {
+      window.location.href = '/sign_in';
+  }
+  else {
+
+  }
+},
+error:function (data) {
+}
+});
+
+}
+</script>

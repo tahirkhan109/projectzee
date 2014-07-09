@@ -31,6 +31,35 @@ class AttendeeDetailsController < ApplicationController
 
   end
 
+  def edit_flight_detail
+  @flight_detail = FlightDetail.find_by_attendee_detail_id(params[:attendee_id])
+   if @flight_detail.present?
+   @flight_detail.update_attributes(edit_flight_params)
+  redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}"
+  else
+    @flight_detail = FlightDetail.new(edit_flight_params)
+     if @flight_detail.save
+       @flight_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
+       redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}"
+     end
+    end
+
+  end
+  def edit_ground_detail
+    @ground_detail = GroundDetail.find_by_attendee_detail_id(params[:attendee_id])
+    if @ground_detail.present?
+     @ground_detail.update_attributes(edit_ground_params)
+    redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}"
+    else
+      @ground_detail = GroundDetail.new(edit_ground_params)
+      if @ground_detail.save
+        @ground_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
+      end
+      redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}"
+      end
+
+  end
+
 
   def create
     @conference = Conference.find(params[:conference_id])
@@ -60,4 +89,10 @@ private
 def params_attendee_detail
 
   params[:attendee_detail].permit(:first_name, :last_name, :city, :state)
+end
+def edit_flight_params
+  params[:flight_detail].permit(:departuring_from,:airline_name,:flight_number,:departure_time,:record_locator,:arriving_at,:arriving_time,:connections)
+end
+def edit_ground_params
+  params[:ground_detail].permit(:departing_from,:departure_time,:destination,:estimated_transit_time,:instructions)
 end

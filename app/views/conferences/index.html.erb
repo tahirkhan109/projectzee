@@ -44,6 +44,7 @@
 </div>
   <div style="margin:0px 0px 35px 0px">
   <%= link_to "New Conference",new_conference_path, :class => 'btn btn-primary' %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete , :class => 'btn btn-primary'%>
     </div>
 </div>
 <script type="text/javascript">

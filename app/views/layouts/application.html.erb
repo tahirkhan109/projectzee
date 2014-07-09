@@ -22,14 +22,14 @@
   <% end %>
 </div>
 <p class="navbar-text pull-right" style="margin: 0px 40px 0px 0px">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
+<%# if user_signed_in? %>
+  <!--Logged in as <strong><%#= current_user.email %></strong>.-->
+  <%#= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+  <%#= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<%# else %>
   <%#= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
   <%#= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+<%# end %>
 
   <!--<div class="container-fluid">-->
 <%= yield %>

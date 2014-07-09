@@ -69,6 +69,26 @@ class WelcomeController < ApplicationController
       end
   end
 
+  def add_boarding_detail
+    @attendee = AttendeeDetail.find(params[:id])
+    if @attendee.present?
+      @attendee.update_attributes(:is_boarding => 1)
+      render :text => "ok"
+    else
+      render :text => "Not Ok"
+    end
+  end
+  def del_boarding_detail
+    @attendee = AttendeeDetail.find(params[:id])
+    if @attendee.present?
+      @attendee.update_attributes(:is_boarding => 0)
+      render :text => "ok"
+    else
+      render :text => "Not Ok"
+    end
+  end
+
+
   def add_csv_data
         puts "1111111111111111111111111111111",params.inspect
     file = AgendaDetail.new(pic_params)

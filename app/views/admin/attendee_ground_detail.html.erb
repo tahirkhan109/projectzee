@@ -1,0 +1,42 @@
+            <!--<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>-->
+		<div class="DLP">
+            <div class="dlp_in t_bg_colr">
+            	<div class="wrapper">
+                	<div class="w_100">
+                    	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
+                        <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
+                    </div><!--w_100-->
+                </div><!--wrapper ends-->
+            </div><!--dlp_in t_bg_colr-->
+            <div class="dlp_box_in">
+            	<div class="wrapper">
+                    <h3>GROUND TRANSPORTATION FOR</h3>
+                  <% params[:id] %>
+                  <% @attendee = AttendeeDetail.find(params[:id]) %>
+                  <% @attendee.ground_detail.inspect %>
+                    <p><%= @attendee.first_name + " " + @attendee.last_name %></p>
+                    <div class="trans_box">
+                        <h2 style="display: inline-block">Car Service Details</h2>
+                      <div class="y_no" style="display: inline-block;width: 120px!important;">
+                      <a style="display: inline-block" href="/admin/edit_attendee_ground_detail?id=<%= params[:id] %>">Edit</a>
+                      </div>
+
+                        <p>Departing From:</p><%= @attendee.ground_detail.departing_from if @attendee.ground_detail.present?%>
+                        <p>Departing Time:</p><%= @attendee.ground_detail.departure_time if @attendee.ground_detail.present?%>
+                        <p>Destination:</p><%= @attendee.ground_detail.destination if @attendee.ground_detail.present?%>
+                        <p>Estimated Transit Time:</p><%= @attendee.ground_detail.estimated_transit_time if @attendee.ground_detail.present?%>
+                        <h4>Instructions</h4>
+                        <!--<p>Instructions:</p>-->
+                      <%= @attendee.ground_detail.instructions if @attendee.ground_detail.present?%>
+                    </div><!--trans_box-->
+                    <div class="logout_btn w_100">
+                    	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>">Back</a>
+                        <!--<a href="/">Log Out</a>-->
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                        <p>Powered by:DLP Innovation</p>
+                        <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
+                    </div><!--login_btn -->
+                </div><!--wrapper ends-->
+            </div><!--dlp_box_in-->
+        </div><!--DLP-->
+

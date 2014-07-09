@@ -16,13 +16,20 @@
                   <% @attendee.flight_detail.inspect %>
                   <p><%= @attendee.first_name + " " + @attendee.last_name %></p>
                     <div class="trans_box">
-                        <h2>Return Flight Details</h2>
+
+                      <h2 style="display: inline-block">Return Flight Details</h2>
+                      <div class="y_no" style="display: inline-block;width: 120px!important;">
+                      <a style="display: inline-block" href="/admin/edit_attendee_flight_detail?id=<%= params[:id] %>">Edit</a>
+                      </div>
+
+
                         <p>Departure Airport:</p><%= @attendee.flight_detail.departuring_from if @attendee.flight_detail.present?%>
                         <p>Airline:</p><%= @attendee.flight_detail.airline_name if @attendee.flight_detail.present?%>
                         <p>Flight Number:</p><%= @attendee.flight_detail.flight_number if @attendee.flight_detail.present?%>
                         <p>Departure Time:</p><%= @attendee.flight_detail.departure_time if @attendee.flight_detail.present?%>
                         <p>Record Locator:</p><%= @attendee.flight_detail.record_locator if @attendee.flight_detail.present?%>
                         <p>Destination Airport:</p><%= @attendee.flight_detail.arriving_at if @attendee.flight_detail.present?%>
+                        <p>Arrival Time:</p><%= @attendee.flight_detail.arriving_time if @attendee.flight_detail.present?%>
                         <p>Connections:</p><%= @attendee.flight_detail.connections if @attendee.flight_detail.present?%>
                         <h2>Need your boarding pass printed for you?</h2>
                         <div class="w_100 y_no">
@@ -34,8 +41,9 @@
                       </div>
                     </div><!--trans_box-->
                     <div class="logout_btn w_100">
-                    	<a class="mrgbot10" href="/attendee_details/attendee_home?id=<%= params[:id] %>">Back</a>
-                        <a href="/">Log Out</a>
+                    	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>">Back</a>
+                        <!--<a href="/">Log Out</a>-->
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
                         <p>Powered by:DLP Innovation</p>
                         <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
                     </div><!--login_btn -->

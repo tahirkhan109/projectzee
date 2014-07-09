@@ -9,7 +9,6 @@ class ConferencesController < ApplicationController
 end
 
   def create
-    puts "00000000000000000000",params.inspect
     @conference = Conference.new(conf_params)
     if @conference.save
       redirect_to @conference
@@ -29,7 +28,6 @@ end
       if @conference.delete
        redirect_to conferences_path
       end
-     #aaaaaaaaaaaaaaaaa
     end
   def update
       @conference = Conference.find(params[:id])
@@ -38,7 +36,6 @@ end
       else
         render "edit"
       end
-      #aaaaaaaaaaaaaaaaaaa
     end
 
   private

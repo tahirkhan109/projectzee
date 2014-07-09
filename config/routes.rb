@@ -5,6 +5,17 @@ Rails.application.routes.draw do
   get "attendee_details/attendee_ground_detail"
   get "attendee_details/attendee_agenda_detail"
   post "attendee_details/display_user_data"
+  get "admin/attendee_home"
+  get "admin/attendee_flight_detail"
+  get "admin/attendee_ground_detail"
+  get "admin/attendee_agenda_detail"
+  get "admin/edit_attendee_flight_detail"
+  get "admin/edit_attendee_ground_detail"
+  patch "attendee_details/edit_flight_detail"
+  post "attendee_details/edit_flight_detail"
+  patch "attendee_details/edit_ground_detail"
+  post "attendee_details/edit_ground_detail"
+  post "admin/display_user_data"
 
   get "admin/index"
   get "super_admin/index"
@@ -30,6 +41,8 @@ Rails.application.routes.draw do
       get "add_flight_detail"
       get "add_ground_detail"
       post "add_agenda_detail"
+      get "add_boarding_detail"
+      get "del_boarding_detail"
     end
   end
 
