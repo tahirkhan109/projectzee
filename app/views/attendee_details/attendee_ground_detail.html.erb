@@ -3,7 +3,7 @@
             <div class="dlp_in t_bg_colr">
             	<div class="wrapper">
                 	<div class="w_100">
-                    	<div class="d_logo"><a href="#"><img src="/assets/logo_01.png"></a></div><!--d_logo-->
+                    	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
                         <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
                     </div><!--w_100-->
                 </div><!--wrapper ends-->
@@ -22,11 +22,12 @@
                         <p>Destination:</p><%= @attendee.ground_detail.destination if @attendee.ground_detail.present?%>
                         <p>Estimated Transit Time:</p><%= @attendee.ground_detail.estimated_transit_time if @attendee.ground_detail.present?%>
                         <h4>Instructions</h4>
-                        <p>Instructions:</p><%= @attendee.ground_detail.instructions if @attendee.ground_detail.present?%>
+                        <!--<p>Instructions:</p>-->
+                      <%= @attendee.ground_detail.instructions if @attendee.ground_detail.present?%>
                     </div><!--trans_box-->
                     <div class="logout_btn w_100">
-                    	<a class="mrgbot10" href="/attendee_details/attendee_home?id=<%= params[:id] %>">back</a>
-                        <a href="/">log out</a>
+                    	<a class="mrgbot10" href="/attendee_details/attendee_home?id=<%= params[:id] %>">Back</a>
+                        <a href="/">Log Out</a>
                         <p>Powered by:DLP Innovation</p>
                         <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
                     </div><!--login_btn -->

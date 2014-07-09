@@ -8,7 +8,7 @@ class Conference < ActiveRecord::Base
   validate :date_validation
   def date_validation
     if self[:end_datetime] < self[:start_datetime]
-      errors[:end_datetime] << "Start Date Time Should Be Less Then End Date Time"
+      errors[:end_datetime] << "Should Be Greater Then Start Datetime"
       return false
     else
       return true

@@ -15,12 +15,12 @@
                   <% @attendee = AttendeeDetail.find(params[:id]) %>
                     <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
                     <div class="w_100 t_boxes">
-                        <a href="/attendee_details/attendee_flight_detail?id=<%= @attendee.id %>"><img src="/assets/plane.png"><span class="span01">flight</span></a>
-                        <a href="/attendee_details/attendee_ground_detail?id=<%= @attendee.id %>"><img src="/assets/car.png"><span class="span02">transportation</span></a>
-                        <a href="/attendee_details/attendee_agenda_detail?id=<%= @attendee.id %>"><img src="/assets/agenda-2.png"><span class="span03">agenda</span></a>
+                        <a href="/attendee_details/attendee_flight_detail?id=<%= @attendee.id %>"><img src="/assets/plane.png"><span class="span01">Flight</span></a>
+                        <a href="/attendee_details/attendee_ground_detail?id=<%= @attendee.id %>"><img src="/assets/car.png"><span class="span02">Transportation</span></a>
+                        <a href="/attendee_details/attendee_agenda_detail?id=<%= @attendee.id %>"><img src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
                     </div><!--w_100-->
                     <div class="logout_btn w_100">
-                    	<a href="/">log out</a>
+                    	<a href="/">Log Out</a>
                         <p>Powered by:DLP Innovation</p>
                         <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
                     </div><!--login_btn -->

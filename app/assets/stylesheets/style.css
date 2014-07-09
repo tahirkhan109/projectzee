@@ -176,27 +176,27 @@ hr {
 
 h1 {
 	font-size: 18px;
-	line-height: 18px;
+	line-height: 1.4;
 }
 
 h2 {
 	font-size: 16px;
-	line-height: 16px;
+	line-height: 1.4;
 }
 
 h3 {
 	font-size: 15px;
-	line-height: 15px;
+	line-height: 1.4;
 }
 
 h4 {
 	font-size: 14px;
-	line-height: 14px;
+	line-height: 1.4;
 }
 
 h5 {
 	font-size: 13px;
-	line-height: 13px;
+	line-height: 1.4;
 }
 
 h6 {
