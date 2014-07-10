@@ -33,8 +33,8 @@
                         <p>Connections:</p><%= @attendee.flight_detail.connections if @attendee.flight_detail.present?%>
                         <h2>Need your boarding pass printed for you?</h2>
                         <div class="w_100 y_no">
-                        	<a class="yes" href="#" onclick="display_message(<%= @attendee.id %>)">Yes</a>
-                            <a href="#" onclick="hide_message(<%= @attendee.id %>)">No</a>
+                        	<a class="yes" onclick="display_message(<%= @attendee.id %>)" style="cursor: pointer">Yes</a>
+                            <a onclick="hide_message(<%= @attendee.id %>)" style="cursor: pointer">No</a>
                         </div><!--w_100-->
                       <div id="boarding_pass" style="display:none">
                       <h6>Thank you, you can pick up your boarding pass at the DLP booth at the end of the conference.</h6>
