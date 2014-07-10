@@ -15,33 +15,63 @@
         <p><%= current_user.email if current_user %></p>
       <% @all_attendee = AttendeeDetail.all %>
         <div class="trans_box">
-            <h2>Agenda Details</h2>
-          <div style="width: 100%">
-            <div style="width: 60%;display: inline-block">
-            <b>Name</b>
-            </div>
-            <div style="width: 35%;display: inline-block">
-              <b>Boarding Pass?</b>
-          </div>
-          </div>
+            <h2>Select Attendee</h2>
+<!--.........................previous......................................-->
+          <!--<div style="width: 100%">-->
+            <!--<div style="width: 60%;display: inline-block">-->
+            <!--<b>Name</b>-->
+            <!--</div>-->
+            <!--<div style="width: 35%;display: inline-block">-->
+              <!--<b>Boarding Pass?</b>-->
+          <!--</div>-->
+          <!--</div>-->
+           <!--<%# unless @all_attendee.blank? %>-->
+              <!--<%# @all_attendee.each do |attendee| %>-->
+          <!--<div style="width: 100%">-->
+            <!--<div style="width: 60%;display: inline-block">-->
+            <!--<a href= "/admin/attendee_home?id=<%#= attendee.id %>" id='<%#= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%#= attendee.first_name.capitalize  + " " + attendee.last_name.capitalize %></a>-->
+            <!--</div>-->
+            <!--<div style="width: 35%;display: inline-block">-->
+              <!--<%# if attendee.is_boarding == false %>-->
+                  <!--No-->
+                  <!--<%# else %>-->
+                  <!--Yes-->
+                  <!--<%# end %>-->
+          <!--</div>-->
+          <!--</div>-->
+              <!--<%# end %>-->
+              <!--<%# end %>-->
+<!--..........................previous.......................................-->
 
-           <% unless @all_attendee.blank? %>
-              <% @all_attendee.each do |attendee| %>
-          <div style="width: 100%">
-            <div style="width: 60%;display: inline-block">
-            <a href= "/admin/attendee_home?id=<%= attendee.id %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name.capitalize  + " " + attendee.last_name.capitalize %></a>
-            </div>
-            <div style="width: 35%;display: inline-block">
-              <% if attendee.is_boarding == false %>
-                  No
-                  <% else %>
-                  Yes
-                  <% end %>
-          </div>
-          </div>
-              <% end %>
-              <% end %>
 
+
+
+
+<% unless @all_attendee.blank? %>
+<table class="table" id="carrier_table_innerqwert" style="border: 0">
+          <thead>
+          <tr>
+            <th>Names</th>
+            <th>Boarding Pass?</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @all_attendee.each do |attendee| %>
+              <tr>
+                <td><a href= "/admin/attendee_home?id=<%= attendee.id %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name.capitalize  + " " + attendee.last_name.capitalize %></a></td>
+                <td>
+                  <% if attendee.is_boarding == false %>
+                                    No
+                                    <% else %>
+                                    Yes
+                                    <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+              <% end %>
+<!--......................upper new.................................-->
             <!--<p>Attached File:</p>-->
           <%#= link_to @attendee.agenda_detail.attach_file_name,@attendee.agenda_detail.attach.url if @attendee.agenda_detail.present?%>
 
@@ -58,5 +88,29 @@
     </div><!--wrapper ends-->
 </div><!--dlp_box_in-->
 </div><!--DLP-->
+<script type="text/javascript">
+    $(document).ready(function(){
+
+            $('#carrier_table_innerqwert').dataTable({
+                "bPaginate":true,
+                "bSort":true,
+                "asDataSearch":true,
+                "bAutoWidth":false
+
+            });
+            $("#carrier_table_inner_length").hide()
+        $("#carrier_table_innerqwert_length").hide()
+//                $("#carrier_table_innerqwert_filter").hide()
+        })
+
+</script>
+<style>
+    .table th, .table td {
+        border-top: 0;
+    }
+        #carrier_table_innerqwert_next {
+            margin:0px 0px 0px 25px
+        }
+</style>
 
 
