@@ -11,6 +11,7 @@ end
   def create
     @conference = Conference.new(conf_params)
     if @conference.save
+      flash[:success] = 'Conference Has Been Created Successfully'
       redirect_to @conference
     else
       render 'new'
@@ -26,12 +27,14 @@ end
 
       @conference = Conference.find(params[:id])
       if @conference.delete
-       redirect_to conferences_path
+        flash[:success] = 'Conference Has Been Deleted Successfully'
+        redirect_to conferences_path
       end
     end
   def update
       @conference = Conference.find(params[:id])
       if @conference.update(conf_params)
+        flash[:success] = 'Conference Has Been Updated Successfully'
         redirect_to @conference
       else
         render "edit"

@@ -19,7 +19,7 @@
 
                       <h2 style="display: inline-block">Return Flight Details</h2>
                       <div class="y_no" style="display: inline-block;width: 120px!important;">
-                      <a style="display: inline-block" href="/admin/edit_attendee_flight_detail?id=<%= params[:id] %>">Edit</a>
+                      <a style="display: inline-block" href="/admin/edit_attendee_flight_detail?id=<%= params[:id] %>&c_id=<%= params[:c_id] %>">Edit</a>
                       </div>
 
 
@@ -41,7 +41,7 @@
                       </div>
                     </div><!--trans_box-->
                     <div class="logout_btn w_100">
-                    	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>">Back</a>
+                    	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>&c_id=<%= params[:c_id] %>">Back</a>
                         <!--<a href="/">Log Out</a>-->
                       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
                         <p>Powered by:DLP Innovation</p>

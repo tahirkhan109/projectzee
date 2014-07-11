@@ -29,8 +29,10 @@
                     </div><!--t_icons-->
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="fields w_100">
+                    <%= text_field_tag :conference_title,nil,:placeholder => "Conference Title" %>
                     <%= f.email_field :email, autofocus: true ,:placeholder => "Email"%>
                     <%= f.password_field :password, autocomplete: "off" ,:placeholder => "Password"%>
+
                     <% if devise_mapping.rememberable? -%>
                         <div><%= f.check_box :remember_me %><p> <%= f.label :remember_me %></p></div>
                       <% end -%>

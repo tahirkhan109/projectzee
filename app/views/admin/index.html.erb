@@ -2,7 +2,7 @@
 <div class="dlp_in t_bg_colr">
 	<div class="wrapper">
     	<div class="w_100">
-        	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
+        	<div class="d_logo"><a><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
             <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
         </div><!--w_100-->
     </div><!--wrapper ends-->
@@ -13,7 +13,8 @@
 
       <%# params[:id] %>
         <p><%= current_user.email if current_user %></p>
-      <% @all_attendee = AttendeeDetail.all %>
+      <% @conf = Conference.find(params[:id]) %>
+      <% @all_attendee = @conf.attendee_details %>
         <div class="trans_box">
             <h2>Select Attendee</h2>
 <!--.........................previous......................................-->
@@ -58,7 +59,7 @@
           <tbody>
           <% @all_attendee.each do |attendee| %>
               <tr>
-                <td><a href= "/admin/attendee_home?id=<%= attendee.id %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name.capitalize  + " " + attendee.last_name.capitalize %></a></td>
+                <td><a href= "/admin/attendee_home?id=<%= attendee.id %>&c_id=<%= params[:id] %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name.capitalize  + " " + attendee.last_name.capitalize %></a></td>
                 <td>
                   <% if attendee.is_boarding == false %>
                                     No

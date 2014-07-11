@@ -35,42 +35,48 @@ class AttendeeDetailsController < ApplicationController
   @flight_detail = FlightDetail.find_by_attendee_detail_id(params[:attendee_id])
    if @flight_detail.present?
    @flight_detail.update_attributes(edit_flight_params)
-  redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}"
+  redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}&c_id=#{@flight_detail.attendee_detail.conference.id}"
   else
     @flight_detail = FlightDetail.new(edit_flight_params)
      if @flight_detail.save
        @flight_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
-       redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}"
+       redirect_to "/admin/attendee_flight_detail?id=#{params[:attendee_id]}&c_id=#{@flight_detail.attendee_detail.conference.id}"
      end
     end
-
   end
   def edit_ground_detail
     @ground_detail = GroundDetail.find_by_attendee_detail_id(params[:attendee_id])
     if @ground_detail.present?
      @ground_detail.update_attributes(edit_ground_params)
-    redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}"
+    redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}&c_id=#{@ground_detail.attendee_detail.conference.id}"
     else
       @ground_detail = GroundDetail.new(edit_ground_params)
       if @ground_detail.save
         @ground_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
       end
-      redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}"
+      redirect_to "/admin/attendee_ground_detail?id=#{params[:attendee_id]}&c_id=#{@ground_detail.attendee_detail.conference.id}"
       end
-
   end
 
 
   def create
     @conference = Conference.find(params[:conference_id])
+    @attendee = AttendeeDetail.where(:first_name => params[:attendee_detail][:first_name], :last_name => params[:attendee_detail][:last_name],:conference_id => params[:conference_id]).first
+    if @attendee.blank?
     @attendee_detail = @conference.attendee_details.create(params_attendee_detail)
+    flash[:success] = 'Attendee Created Successfully'
     redirect_to conference_path(@conference)
+    else
+      flash[:error] = 'User With This Name Already Exists'
+      redirect_to conference_path(@conference)
+      end
   end
 
   def destroy
     @conference = Conference.find(params[:conference_id])
     @attendee_detail = @conference.attendee_details.find(params[:id])
     @attendee_detail.destroy
+    flash[:success] = 'Attendee Deleted Successfully'
     redirect_to @conference
   end
 
