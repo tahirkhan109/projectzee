@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    @conference = Conference.find_by_title(params[:conference_title])
+    @conference = Conference.find_by_title(params[:conference_title].upcase)
     if user_signed_in?
       if current_user.admin?
         if @conference.present?
         "/admin/index?id=#{@conference.id}"
         else
+          flash.discard
           flash[:success] = 'Conference Does Not Exists'
           session.clear
           end

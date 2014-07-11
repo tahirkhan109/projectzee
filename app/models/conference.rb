@@ -14,4 +14,9 @@ class Conference < ActiveRecord::Base
       return true
     end
   end
+  before_save :uppercase_title
+
+    def uppercase_title
+      self.title.upcase!
+    end
 end
