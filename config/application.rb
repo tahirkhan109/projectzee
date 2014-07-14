@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ProjectZee
   class Application < Rails::Application
     config.assets.precompile += [
-   'dlp.css','font-awesome1.css','normalize.css'
+   'dlp.css','font-awesome1.css','anormalize.css'
    ]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

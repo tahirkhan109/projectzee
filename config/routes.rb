@@ -43,6 +43,8 @@ Rails.application.routes.draw do
       post "add_agenda_detail"
       get "add_boarding_detail"
       get "del_boarding_detail"
+      post "add_csv_data"
+      get "add_csv_popup"
     end
   end
 

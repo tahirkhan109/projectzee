@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       if current_user.admin?
         if @conference.present?
+          session[:id] = @conference.id
         "/admin/index?id=#{@conference.id}"
         else
           flash.discard

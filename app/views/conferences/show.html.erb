@@ -43,6 +43,7 @@
 
       <%= link_to "Back",  conferences_path, :class => 'btn btn-primary' %>
       <%= link_to "Edit", edit_conference_path , :class => 'btn btn-primary' %>
+      <a class="btn btn-lg btn-info margin10" id="add_csv" onclick="parse_csv(<%= @conference.id %>)"> Import Csv </a>
     </div>
 
   </div>
@@ -215,6 +216,27 @@
                     }
                 });
             }
+        }
+        function parse_csv(id){
+            $("#all_partials").show()
+//            alert($("#uniform-undefined input[type='radio']:checked").val())
+            $.ajax({
+                url:'/welcome/add_csv_popup?id='+ id,
+                type:'get',
+                dataType:'html',
+                processData:false,
+                success:function (data) {
+                    if (data == "not") {
+                        window.location.href = '/sign_in';
+                    }
+                    else {
+                        $("#all_partials").css("display","block");
+                        $("#all_partials").html(data);
+                    }
+                },
+                error:function (data) {
+                }
+            });
         }
         function add_ground_detail(){
 //            alert($("#uniform-undefined input[type='radio']:checked").val())
