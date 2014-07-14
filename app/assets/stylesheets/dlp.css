@@ -49,6 +49,10 @@ background: rgb(45,103,178);background: url(data:image/svg+xml;base64,PD94bWwgdm
 
 
 
+
+@media only screen and (max-width: 568px) {
+.wrapper {width:100%;max-width: 100%}
+}
 @media only screen and (max-width: 475px) {
 .fields input, .login_btn a, .logout_btn a { width:85%;}
 .t_icons a { width:100px; clear:both; text-align:center; margin:15px 0;}
@@ -60,6 +64,4 @@ background: rgb(45,103,178);background: url(data:image/svg+xml;base64,PD94bWwgdm
 
 }
 @media only screen and (max-width: 320px) {
-
-
 }
