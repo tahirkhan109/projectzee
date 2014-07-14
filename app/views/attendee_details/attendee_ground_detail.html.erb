@@ -10,17 +10,19 @@
             </div><!--dlp_in t_bg_colr-->
             <div class="dlp_box_in">
             	<div class="wrapper">
-                    <h3>GROUND TRANSPORTATION FOR</h3>
+                    <h3>Ground Transportation For</h3>
                   <% params[:id] %>
                   <% @attendee = AttendeeDetail.find(params[:id]) %>
                   <% @attendee.ground_detail.inspect %>
                     <p><%= @attendee.first_name + " " + @attendee.last_name %></p>
-                    <div class="trans_box">
-                        <h2>Car Service Details</h2>
-                        <p>Departing From:</p><%= @attendee.ground_detail.departing_from if @attendee.ground_detail.present?%>
-                        <p>Departing Time:</p><%= @attendee.ground_detail.departure_time if @attendee.ground_detail.present?%>
-                        <p>Destination:</p><%= @attendee.ground_detail.destination if @attendee.ground_detail.present?%>
-                        <p>Estimated Transit Time:</p><%= @attendee.ground_detail.estimated_transit_time if @attendee.ground_detail.present?%>
+                    <div class="trans_box2">
+                        <h2>Car Service</h2>
+                      <div class="w_100 mrgbot15">
+                        <p>Departuring From</p><span><%= @attendee.ground_detail.departing_from if @attendee.ground_detail.present?%></span>
+                        <p>Departure Time</p><span><%= @attendee.ground_detail.departure_time if @attendee.ground_detail.present?%></span>
+                        <p>Destination</p><span><%= @attendee.ground_detail.destination if @attendee.ground_detail.present?%></span>
+                        <p>Estimated Transit Time</p><span><%= @attendee.ground_detail.estimated_transit_time if @attendee.ground_detail.present?%></span>
+                        </div>
                         <h4>Instructions</h4>
                         <!--<p>Instructions:</p>-->
                       <%= @attendee.ground_detail.instructions if @attendee.ground_detail.present?%>

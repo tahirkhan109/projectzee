@@ -32,15 +32,16 @@
                     <%= text_field_tag :conference_title,nil,:placeholder => "Conference Title" %>
                     <%= f.email_field :email, autofocus: true ,:placeholder => "Email"%>
                     <%= f.password_field :password, autocomplete: "off" ,:placeholder => "Password"%>
-
+                    <div class="checkbox_style">
                     <% if devise_mapping.rememberable? -%>
                         <div><%= f.check_box :remember_me %><p> <%= f.label :remember_me %></p></div>
                       <% end -%>
+                    </div>
                     	<!--<input type="text" placeholder="firstname">-->
                         <!--<input type="text" placeholder="lastname">-->
                     </div><!--fields-->
                     <div class="login_btn w_100">
-                    <%= f.submit "Login", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;width: 365px;" %>
+                    <%= f.submit "Login", :class => "loginbtn2" %>
                       <!--<a href="" id="submit_user_data">login</a>-->
                         <p>Powered by:DLP Innovation</p>
                     </div><!--login_btn -->

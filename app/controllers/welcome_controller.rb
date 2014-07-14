@@ -163,6 +163,9 @@ class WelcomeController < ApplicationController
 
   private
   def pic_params
+    params[:agenda_detail].permit(:attach) # (:pic_file_name,:pic_content_type,:pic_file_size)
+  end
+  def csv_params
     params[:csv_parse].permit(:attach) # (:pic_file_name,:pic_content_type,:pic_file_size)
   end
 

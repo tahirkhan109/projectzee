@@ -16,32 +16,32 @@
 <%= form_for :ground_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Departing From:*</strong>
+      <strong>Departing From*</strong>
             </div>
     <%= f.text_field :departing_from,:placeholder => "" %>
       <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Departure Time:*</strong>
+      <strong>Departure Time*</strong>
             </div>
     <%= f.text_field :departure_time,:placeholder => "" ,:id => "datetimepicker5" %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Destinations:*</strong>
+      <strong>Destinations*</strong>
             </div>
     <%= f.text_field :destination,:placeholder => ""  %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Estimated Transit Time:*</strong>
+      <strong>Estimated Transit Time*</strong>
             </div>
     <%= f.text_field :estimated_transit_time,:placeholder => "" %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Instructions:</strong>
+      <strong>Instructions</strong>
             </div>
     <%= f.text_field :instructions ,:placeholder => "" %>
     </p>

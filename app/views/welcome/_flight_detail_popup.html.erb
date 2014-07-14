@@ -14,50 +14,50 @@
 <%= form_for :flight_detail, :html => {:onsubmit => "return false;"} do  |f| %><!--, :url => "/welcome/create_flight_detail"-->
     <p>
       <div style="width:120px;display: inline-block">
-      <strong>Airline Name:*</strong>
+      <strong>Airline Name*</strong>
       </div>
         <%= f.text_field :airline_name %>
       <%= hidden_field_tag :attendee_id, @attendee_detail.id %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Flight Number:*</strong>
+      <strong>Flight Number*</strong>
             </div>
     <%= f.text_field :flight_number %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Record Locator:*</strong>
+      <strong>Record Locator*</strong>
             </div>
     <%= f.text_field :record_locator %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Departure From:*</strong>
+      <strong>Departure From*</strong>
             </div>
     <%= f.text_field :departuring_from  %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Departure Time:*</strong>
+      <strong>Departure Time*</strong>
             </div>
     <%= f.text_field :departure_time ,:id => "datetimepicker3" %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Arrival At:*</strong>
+      <strong>Arrival At*</strong>
             </div>
     <%= f.text_field :arriving_at  %>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Arrival Time:*</strong>
+      <strong>Arrival Time*</strong>
             </div>
     <%= f.text_field :arriving_time  ,:id => "datetimepicker4"%>
     </p>
     <p>
           <div style="width:120px;display: inline-block">
-      <strong>Connections:</strong>
+      <strong>Connections</strong>
             </div>
     <%= f.text_field :connections  %>
     </p>

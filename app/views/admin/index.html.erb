@@ -14,7 +14,7 @@
   <!--dlp_in t_bg_colr-->
   <div class="dlp_box_in">
     <div class="wrapper">
-      <h3>Well Come</h3>
+      <h3>well come</h3>
 
       <%# params[:id] %>
       <p><%= current_user.email if current_user %></p>
@@ -65,7 +65,7 @@
               <% @all_attendee.each do |attendee| %>
                   <tr>
                     <td>
-                      <a href="/admin/attendee_home?id=<%= attendee.id %>&c_id=<%= params[:id] %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name.capitalize + " " + attendee.last_name.capitalize %></a>
+                      <a href="/admin/attendee_home?id=<%= attendee.id %>&c_id=<%= params[:id] %>" id='<%= attendee.id %>' style=" text-decoration:underline; cursor:pointer;text-decoration-color: blue;color: #14498E"><%= attendee.first_name + " " + attendee.last_name%></a>
                     </td>
                     <td>
                       <% if attendee.is_boarding == false %>

@@ -81,7 +81,7 @@ class AttendeeDetailsController < ApplicationController
   end
 
   def display_user_data
-    @attendee = AttendeeDetail.where(:first_name => params[:attendee][:firstname].upcase, :last_name => params[:attendee][:lastname].upcase).first
+    @attendee = AttendeeDetail.where(:first_name => params[:attendee][:firstname], :last_name => params[:attendee][:lastname]).first
     if @attendee.present?
       session[:attendee_id] = @attendee.id
       redirect_to "/attendee_details/attendee_home?id=#{@attendee.id}"
