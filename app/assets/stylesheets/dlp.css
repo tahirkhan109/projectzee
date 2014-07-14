@@ -1,4 +1,4 @@
-.wrapper { max-width:475px; margin:0 auto; position:relative; width:100%; padding:0 20px;}
+.wrapper {margin:0 auto; position:relative; width:475px; padding:0 20px;}
 .w_100 { float:left!important; width:100%!important;}
 .mrgbot10 { margin-bottom:10px!important;}
 .bg_hold { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;}
@@ -51,8 +51,9 @@ background: rgb(45,103,178);background: url(data:image/svg+xml;base64,PD94bWwgdm
 
 
 @media only screen and (max-width: 568px) {
-.wrapper {width:100%;max-width: 100%}
+.wrapper {width:100%}
 }
+
 @media only screen and (max-width: 475px) {
 .fields input, .login_btn a, .logout_btn a { width:85%;}
 .t_icons a { width:100px; clear:both; text-align:center; margin:15px 0;}
@@ -63,5 +64,6 @@ background: rgb(45,103,178);background: url(data:image/svg+xml;base64,PD94bWwgdm
 .y_no a { width:100%; margin:12px 0 0 0;}
 
 }
+
 @media only screen and (max-width: 320px) {
 }
