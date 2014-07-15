@@ -1,3 +1,4 @@
+<div id="all_partials" style=""></div>
      <!--<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>-->
 <div class="DLP">
             <div class="dlp_in t_bg_colr">
@@ -15,11 +16,13 @@
                   <%#= params[:id] %>
                   <%#= params[:c_id] %>
                   <% @attendee = AttendeeDetail.find(params[:id]) %>
+                  <% @conference = @attendee.conference %>
                     <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
+
                     <div class="w_100 t_boxes">
                         <a href="/admin/attendee_flight_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/plane.png"><span class="span01">Flight</span></a>
                         <a href="/admin/attendee_ground_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/car.png"><span class="span02">Transportation</span></a>
-                        <a href="/admin/attendee_agenda_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img class="t_box_agenda" src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
+                      <a onclick="open_pdf()" href=""><img class="t_box_agenda" src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
                     </div><!--w_100-->
                     <div class="logout_btn w_100">
                       <a class="mrgbot10" href="/admin/index?id=<%=params[:c_id] %>">Back</a>
@@ -32,3 +35,34 @@
             </div><!--dlp_box_in-->
         </div><!--DLP-->
 
+     <script type="text/javascript">
+         function open_pdf() {
+        if (<%= @conference.agenda_detail.blank? %>) {
+            alert("Agenda detail missing against this conference.")
+            hudMsg('info', "Agenda detail missing against this conference.")
+                 return false;
+             }
+             else {
+                 $("#all_partials").show;
+                 $("#all_partials").css("display", "block");
+                 $.ajax({
+                     url: '/attendee_details/agenda_popup?id=' + <%= @conference.id %>,
+                     type: 'get',
+                     dataType: 'html',
+                     processData: false,
+                     success: function (data) {
+                         if (data == "not") {
+                             window.location.href = '/sign_in';
+                         }
+                         else {
+                             $("#all_partials").html(data);
+                         }
+                     },
+                     error: function (data) {
+                     }
+                 });
+             }
+
+
+         }
+     </script>
