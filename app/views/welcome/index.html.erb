@@ -19,8 +19,9 @@
             <div class="wrapper">
             	<div class="dlp_in t_bg">
                 	<div class="w_100">
+                      <% d= Date.today %>
                     	<div class="d_logo"><a ><img src="assets/logo_2.png"></a></div>
-                        <div class="d_date">July 18, 2014 - Chicago, IL</div>
+                        <div class="d_date"><%= d.strftime('%d %b %Y') %> - Chicago, IL</div>
                     </div><!--w_100-->
                     <div class="t_icons w_100">
                     	<a><img src="assets/plane.png"></a>
@@ -37,7 +38,7 @@
                         <!--<input type="text" placeholder="lastname">-->
                     </div><!--fields-->
                     <div class="login_btn w_100">
-                    <%= f.submit "Login", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;width: 365px;" %>
+                    <%= f.submit "Login", :class => "loginbtn2" %>
                       <!--<a href="" id="submit_user_data">login</a>-->
                         <p>Powered by the DLP Innovation Lab</p>
                     </div><!--login_btn -->

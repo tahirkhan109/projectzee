@@ -4,7 +4,8 @@
 	<div class="wrapper">
     	<div class="w_100">
         	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
-            <div class="d_date">July 18, 2014 - Chicago, IL</div><!--d_date-->
+          <% d= Date.today %>
+            <div class="d_date"><%= d.strftime('%d %b %Y') %> - Chicago, IL</div><!--d_date-->
         </div><!--w_100-->
     </div><!--wrapper ends-->
 </div><!--dlp_in t_bg_colr-->

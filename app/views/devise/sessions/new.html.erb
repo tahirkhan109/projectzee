@@ -20,7 +20,8 @@
             	<div class="dlp_in t_bg">
                 	<div class="w_100">
                     	<div class="d_logo"><a href="#"><img src="/assets/logo_2.png"></a></div>
-                        <div class="d_date">July 18, 2014 - Chicago, IL</div>
+                      <% d= Date.today %>
+                        <div class="d_date"><%= d.strftime('%d %b %Y') %> - Chicago, IL</div>
                     </div><!--w_100-->
                     <div class="t_icons w_100">
                     	<a href="#"><img src="/assets/plane.png"></a>
@@ -32,11 +33,11 @@
                     <%= text_field_tag :conference_title,nil,:placeholder => "Conference Title" %>
                     <%= f.text_field :email, autofocus: true ,:placeholder => "Email"%>
                     <%= f.password_field :password, autocomplete: "off" ,:placeholder => "Password"%>
-                    <div class="checkbox_style">
-                    <% if devise_mapping.rememberable? -%>
-                        <div><%= f.check_box :remember_me %><p> <%= f.label :remember_me %></p></div>
-                      <% end -%>
-                    </div>
+                    <!--<div class="checkbox_style">-->
+                    <%# if devise_mapping.rememberable? -%>
+                        <!--<div><%#= f.check_box :remember_me %><p> <%#= f.label :remember_me %></p></div>-->
+                      <%# end -%>
+                    <!--</div>-->
                     	<!--<input type="text" placeholder="firstname">-->
                         <!--<input type="text" placeholder="lastname">-->
                     </div><!--fields-->
