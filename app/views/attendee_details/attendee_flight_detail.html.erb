@@ -26,7 +26,7 @@
                         <p>Destination Airport</p><span><%= @attendee.flight_detail.arriving_at if @attendee.flight_detail.present?%></span>
                         <p>Connections</p><span><%= @attendee.flight_detail.connections if @attendee.flight_detail.present?%></span>
                       </div>
-                        <h2>Need your boarding pass printed?</h2>
+                        <h2 style="font-size: 18px!important;">Need your boarding pass printed?</h2>
                         <div class="w_100 yy_no">
                         	<a class="yes"  onclick="display_message(<%= @attendee.id %>)" style="cursor: pointer">Yes</a>
                             <a onclick="hide_message(<%= @attendee.id %>)" style="cursor: pointer">No</a>
