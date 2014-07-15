@@ -10,7 +10,7 @@
             </div><!--dlp_in t_bg_colr--> 
             <div class="dlp_box_in">
             	<div class="wrapper">
-                    <h3>Flight Details For</h3>
+                    <h3>Flight Details</h3>
                   <%#= params[:id]%>
                   <% @attendee = AttendeeDetail.find_by_id(params[:id]) %>
                   <% @attendee.flight_detail.inspect %>
@@ -27,7 +27,7 @@
                         <p>Connections</p><span><%= @attendee.flight_detail.connections if @attendee.flight_detail.present?%></span>
                       </div>
                         <h2>Need your boarding pass printed?</h2>
-                        <div class="w_100 y_no">
+                        <div class="w_100 yy_no">
                         	<a class="yes"  onclick="display_message(<%= @attendee.id %>)" style="cursor: pointer">Yes</a>
                             <a onclick="hide_message(<%= @attendee.id %>)" style="cursor: pointer">No</a>
                         </div><!--w_100-->
@@ -38,7 +38,7 @@
                     <div class="logout_btn w_100">
                     	<a class="mrgbot10" href="/attendee_details/attendee_home?id=<%= params[:id] %>">Back</a>
                         <a href="/">Log Out</a>
-                        <p>Powered by:DLP Innovation</p>
+                        <p>Powered by the DLP Innovation Lab</p>
                         <span>© 2014 Distance Learning Providers | All Rights Reserved</span>
                     </div><!--login_btn -->
                 </div><!--wrapper ends-->
