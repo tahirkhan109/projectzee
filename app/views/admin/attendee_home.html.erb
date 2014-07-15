@@ -19,7 +19,7 @@
                     <div class="w_100 t_boxes">
                         <a href="/admin/attendee_flight_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/plane.png"><span class="span01">Flight</span></a>
                         <a href="/admin/attendee_ground_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/car.png"><span class="span02">Transportation</span></a>
-                        <a href="/admin/attendee_agenda_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
+                        <a href="/admin/attendee_agenda_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img class="t_box_agenda" src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
                     </div><!--w_100-->
                     <div class="logout_btn w_100">
                       <a class="mrgbot10" href="/admin/index?id=<%=params[:c_id] %>">Back</a>

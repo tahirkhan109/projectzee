@@ -44,6 +44,7 @@
       <%= link_to "Back",  conferences_path, :class => 'btn btn-primary' %>
       <%= link_to "Edit", edit_conference_path , :class => 'btn btn-primary' %>
       <a class="btn btn-lg btn-info margin10" id="add_csv" onclick="parse_csv(<%= @conference.id %>)"> Import Csv </a>
+      <a class="btn btn-lg btn-info margin10" id="add_agenda" onclick="add_agenda_detail(<%= @conference.id %>)"> Agenda Detail </a>
     </div>
 
   </div>
@@ -107,7 +108,7 @@
         <div style="margin:10px 0px 20px 0px">
         <a class="btn btn-lg btn-info margin10" id="add_flight" onclick="add_flight_detail()"> Flight Detail </a>
         <a class="btn btn-lg btn-info margin10" id="add_ground" onclick="add_ground_detail()"> Ground Detail </a>
-        <a class="btn btn-lg btn-info margin10" id="add_agenda" onclick="add_agenda_detail()"> Agenda Detail </a>
+        <!--<a class="btn btn-lg btn-info margin10" id="add_agenda" onclick="add_agenda_detail()"> Agenda Detail </a>-->
         </div>
         <table class="table table-bordered table-striped table-condensed" id="carrier_table_inner" >
           <thead>
@@ -266,14 +267,15 @@
                             });
                         }
         }
-        function add_agenda_detail(){
+        function add_agenda_detail(id){
 //            alert($("#uniform-undefined input[type='radio']:checked").val())
-                        var id = $("#uniform-undefined input[type='radio']:checked").val()
-                        if(id == undefined){
-                            hudMsg('info', "Please Select A Attendee From List")
-                            return false;
-                        }
-                        else {
+//                        var id = $("#uniform-undefined input[type='radio']:checked").val()
+//                        if(id == undefined){
+//                            hudMsg('info', "Please Select A Attendee From List")
+//                            return false;
+//                        }
+//                        else {
+//            alert(id)
                             $("#all_partials").show;
                             $.ajax({
                                 url:'/welcome/add_popup_agenda?id='+ id,
@@ -292,7 +294,7 @@
                                 error:function (data) {
                                 }
                             });
-                        }
+//                        }
         }
     $(document).ready(function(){
 

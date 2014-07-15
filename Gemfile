@@ -36,6 +36,9 @@ gem 'sdoc',          group: :doc, require: false
 gem 'spring',        group: :development
 gem 'paperclip'
 gem 'pg'
+#gem 'aws-sdk'
+gem "aws-s3", :require => "aws/s3"
+gem "aws-sdk"
 group :production do
 gem 'rails_12factor'
 end

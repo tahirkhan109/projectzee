@@ -215,6 +215,9 @@
     position: absolute;
     top: 15px
 }
+.t_box_agenda {
+    left: 14px!important;
+}
 
 .span01 {
     bottom: 2px;

@@ -31,6 +31,13 @@ class AttendeeDetailsController < ApplicationController
 
   end
 
+  def agenda_popup
+    @conference = Conference.find(params[:id])
+    render :partial => "/attendee_details/agenda_popup",:locals => {:@conference => @conference }
+
+
+  end
+
   def edit_flight_detail
   @flight_detail = FlightDetail.find_by_attendee_detail_id(params[:attendee_id])
    if @flight_detail.present?

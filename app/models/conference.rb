@@ -1,5 +1,6 @@
 class Conference < ActiveRecord::Base
   has_many :attendee_details, dependent: :destroy
+  has_one :agenda_detail
   validates :title, presence: true, :uniqueness => true
   validates :location, presence: true
   validates :start_datetime, presence: true

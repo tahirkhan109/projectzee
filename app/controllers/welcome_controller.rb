@@ -32,8 +32,8 @@ class WelcomeController < ApplicationController
   end
 
   def add_popup_agenda
-    @attendee_detail = AttendeeDetail.find(params[:id])
-    render :partial => "agenda_details_popup", :locals => {:@attendee_detail => @attendee_detail}
+    @conference = Conference.find(params[:id])
+    render :partial => "agenda_details_popup", :locals => {:@conference => @conference}
   end
 
   def add_flight_detail
@@ -57,20 +57,21 @@ class WelcomeController < ApplicationController
   end
 
   def add_agenda_detail
+    puts "00000000000000000000000000000000000000",params.inspect
     if params[:agenda_detail].present?
-      @agenda_detail = AgendaDetail.where(:attendee_detail_id => params[:attendee_id]).first
+      @agenda_detail = AgendaDetail.where(:conference_id => params[:conference_id]).first
       if @agenda_detail.present?
         @agenda_detail.update_attributes(pic_params)
-        attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
-        @conference = Conference.find(attendee.conference_id)
+        #attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
+        @conference = Conference.find(params[:conference_id])
         flash[:success] = 'Your Uploaded File Has Been Updated SuccessFully. . .'
         redirect_to @conference
       else
         @agenda_detail = AgendaDetail.new(pic_params)
         if @agenda_detail.save
-          @agenda_detail.update_attributes(:attendee_detail_id => params[:attendee_id])
-          attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
-          @conference = Conference.find(attendee.conference_id)
+          @agenda_detail.update_attributes(:conference_id => params[:conference_id])
+          #attendee = AttendeeDetail.where(:id => @agenda_detail.attendee_detail_id).first
+          @conference = Conference.find(params[:conference_id])
           flash[:success] = 'Your File Has Been Uploaded SuccessFully. . .'
           redirect_to @conference
         end

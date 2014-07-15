@@ -9,9 +9,10 @@
       </div>
     </div>
     <div class="box-content">
+
       <!--, :url => '/welcome/add_agenda_detail'-->
-      <% @agenda_detail = AgendaDetail.where(:attendee_detail_id => @attendee_detail.id).first %>
-      <% if @agenda_detail.present? %>
+      <% @agenda_detail = AgendaDetail.where(:conference_id => @conference.id).first %>
+      <% if @conference.present? %>
           <b>
             <%= link_to @agenda_detail.attach_file_name,@agenda_detail.attach.url %>
           </b>
@@ -23,7 +24,7 @@
     <b> <%#= f.label :attach %> </b><br/>
     <%= f.file_field :attach %>
   </p>
-<%= hidden_field_tag :attendee_id, @attendee_detail.id %>
+<%= hidden_field_tag :conference_id, @conference.id %>
 
     <b> <%= f.submit :class=> "btn btn-lg btn-info margin10" %> </b>
    <a class="btn btn-lg btn-info margin10" id="cancel_boxs" onclick="cancel_box()"> Cancel </a>

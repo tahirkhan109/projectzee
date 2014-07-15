@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "programmer/index"
   get "attendee_details/attendee_home"
+  get "attendee_details/agenda_popup"
   get "attendee_details/attendee_flight_detail"
   get "attendee_details/attendee_ground_detail"
   get "attendee_details/attendee_agenda_detail"

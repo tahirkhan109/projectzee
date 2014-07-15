@@ -20,10 +20,10 @@ users = User.all
 users.each { |user| user.destroy } if users.present?
 puts "************Adding User Super Admin************"
 #Role.create(:title => "super_admin")
-user = User.create!(:email => "admin@gmail.com", :password => "12345678")
+user = User.create!(:email => "admin", :password => "1234")
 role = Role.where(:title => "admin").first
 user.roles << role
-user1 = User.create!(:email => "programmer@gmail.com", :password => "12345678")
+user1 = User.create!(:email => "programmer", :password => "1234")
 role1 = Role.where(:title => "programmer").first
 user1.roles << role1
 puts "************Super Admin Successfully Created************"
