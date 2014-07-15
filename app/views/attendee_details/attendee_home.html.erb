@@ -1,4 +1,6 @@
-<div id="all_partials" style=""></div>
+<div id="all_partials" style="">
+
+</div>
 <!--<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>-->
 <div class="DLP">
   <div class="dlp_in t_bg_colr">
@@ -61,19 +63,22 @@
             return false;
         }
         else {
-            $("#all_partials").show;
-            $("#all_partials").css("display", "block");
             $.ajax({
                 url: '/attendee_details/agenda_popup?id=' + <%= @conference.id %>,
                 type: 'get',
                 dataType: 'html',
                 processData: false,
+                async: false,
                 success: function (data) {
                     if (data == "not") {
                         window.location.href = '/sign_in';
                     }
                     else {
-                        $("#all_partials").html(data);
+                        setTimeout(function(){
+                            $("#all_partials").show;
+                            $("#all_partials").css("display", "block");
+                            $("#all_partials").html(data);
+                        },1000)
                     }
                 },
                 error: function (data) {

@@ -43,8 +43,6 @@
                  return false;
              }
              else {
-                 $("#all_partials").show;
-                 $("#all_partials").css("display", "block");
                  $.ajax({
                      url: '/attendee_details/agenda_popup?id=' + <%= @conference.id %>,
                      type: 'get',
@@ -55,7 +53,11 @@
                              window.location.href = '/sign_in';
                          }
                          else {
-                             $("#all_partials").html(data);
+                             setTimeout(function(){
+                                 $("#all_partials").show;
+                                 $("#all_partials").css("display", "block");
+                                 $("#all_partials").html(data);
+                             },1000)
                          }
                      },
                      error: function (data) {
