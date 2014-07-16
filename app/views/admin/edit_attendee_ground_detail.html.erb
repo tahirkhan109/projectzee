@@ -40,7 +40,7 @@
               <%= f.submit "Submit", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;float:right" %>
               <% end %>
         </div><!--trans_box-->
-        <div class="logout_btn w_100">
+        <div class="logout_btn w_100" style="padding-bottom: 15px">
         	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>&c_id=<%= params[:c_id] %>">Back</a>
             <!--<a href="/">Log Out</a>-->
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>

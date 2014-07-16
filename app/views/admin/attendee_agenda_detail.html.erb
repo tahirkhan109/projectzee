@@ -26,7 +26,7 @@
         </div>
 
       <!--trans_box-->
-        <div class="logout_btn w_100">
+        <div class="logout_btn w_100" style="padding-bottom: 15px">
         	<a class="mrgbot10" href="/admin/attendee_home?id=<%= params[:id] %>&c_id=<%= params[:c_id] %>">Back</a>
             <!--<a href="/">Log Out</a>-->
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>

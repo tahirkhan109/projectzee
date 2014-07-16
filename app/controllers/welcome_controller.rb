@@ -116,12 +116,12 @@ class WelcomeController < ApplicationController
   def add_csv_data
     puts "000000000000000000000000000", params.inspect
     @conference = Conference.find(params[:conference_id])
-
-    file = AgendaDetail.new(pic_params)
+    file = AgendaDetail.new(csv_params)
     puts "............................  .....", file.inspect
     insert = []
     CSV.foreach(params[:csv_parse][:attach].path, headers: true) do |row, index|
       #if (row["first_name"].present? &&  row["last_name"].present?)
+
       if check_duplicate(params[:conference_id], row["first_name"], row["last_name"])
         @attendee = AttendeeDetail.new(:first_name => row["first_name"], :last_name => row["last_name"], :city => row["city"], :state => row["state"], :conference_id => params[:conference_id])
         if @attendee.save
@@ -148,18 +148,17 @@ class WelcomeController < ApplicationController
         puts "//////////////////", row["estimated_transit_time"]
         puts "//////////////////", row["instructions"]
         flash[:success] = 'Your File Has Been Uploaded SuccessFully. . .'
-        redirect_to @conference
+        #redirect_to @conference
         #end
       else
         puts "00000000000000000000000000000000000000000", row
         insert << row
         puts "***************************************", insert.inspect
-        flash[:error] = 'Error Import Csv'
-        redirect_to @conference
-
+        #flash[:error] = 'Error Import Csv'
+        #redirect_to @conference
       end
     end
-
+    redirect_to @conference
   end
 
   private
@@ -171,10 +170,8 @@ class WelcomeController < ApplicationController
   end
 
   def check_duplicate(id, first_name, last_name)
-
     if first_name.present? && last_name.present?
       attendee = AttendeeDetail.where(:conference_id => id, :first_name => first_name, :last_name => last_name).first
-
       return true if attendee.blank?
       return false if attendee.present?
     else
