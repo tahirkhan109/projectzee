@@ -46,6 +46,14 @@
             </div><!--dlp_box_in-->
         </div><!--DLP-->
 <script type="text/javascript">
+    $(document).ready(function(){
+      if ('<%=@attendee.is_boarding %>' == "true")
+      {
+          $("#boarding_pass").show()
+          $(".yes").css("background","green");
+      }
+  })
+
   function display_message(id){
       $("#boarding_pass").show()
       $(".yes").css("background","green");

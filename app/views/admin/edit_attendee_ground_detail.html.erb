@@ -22,9 +22,9 @@
         <p><%= @attendee.first_name + " " + @attendee.last_name %></p>
         <div class="trans_box">
             <h2 style="display: inline-block">Car Service</h2>
-          <div class="y_no" style="display: inline-block;width: 120px!important;">
-          <a style="display: inline-block" href="#">Edit</a>
-          </div>
+          <!--<div class="y_no" style="display: inline-block;width: 120px!important;">-->
+          <!--<a style="display: inline-block" href="#">Edit</a>-->
+          <!--</div>-->
           <%= form_for @ground_detail, :url => "/attendee_details/edit_ground_detail" do |f| %>
               <p>Departing From</p>
               <%= f.text_field :departing_from ,:placeholder => "Departing From"%>
@@ -37,7 +37,7 @@
              <%= f.text_field :estimated_transit_time ,:placeholder => "Estimated Transit Time"%>
               <h4>Instructions</h4>
              <%= f.text_area :instructions ,:placeholder => "Instructions"%>
-              <%= f.submit "Submit", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;width: 85px;float:right" %>
+              <%= f.submit "Submit", :style => "background: linear-gradient(to bottom, #2D67B2 0%, #20579F 50%, #154A8E 100%) repeat scroll 0 0 transparent;border: medium none !important;border-radius: 10px 10px 10px 10px;color: #FFFFFF;display: inline-block;font-size: 20px;height: 37px;line-height: 37px;outline: medium none;text-decoration: none;float:right" %>
               <% end %>
         </div><!--trans_box-->
         <div class="logout_btn w_100">
