@@ -31,8 +31,8 @@
 
       <%#= params[:id]%>
       <% @attendee = AttendeeDetail.find(params[:id]) %>
-      <%# @conference = @attendee.conference %>
-      <% @conference = Conference.find(@attendee.conference_id) %>
+      <% @conference = @attendee.conference %>
+      <%# @conference = Conference.find(@attendee.conference_id) %>
       <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
 
       <div class="w_100 t_boxes">
