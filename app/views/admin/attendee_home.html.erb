@@ -23,7 +23,12 @@
                     <div class="w_100 t_boxes">
                         <a href="/admin/attendee_flight_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/plane.png"><span class="span01">Flight</span></a>
                         <a href="/admin/attendee_ground_detail?id=<%= @attendee.id %>&c_id=<%= params[:c_id] %>"><img src="/assets/car.png"><span class="span02">Transportation</span></a>
+                      <% if @conference.agenda_detail.present? %>
                       <a onclick="open_pdf()" href=""><img class="t_box_agenda" src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
+                          <% else %>
+                      <a onclick="open_no_pdf()" href=""><img class="t_box_agenda" src="/assets/agenda-2.png"><span class="span03">Agenda</span></a>
+                      <% end %>
+
                     </div><!--w_100-->
                     <div class="logout_btn w_100">
                       <a class="mrgbot10" href="/admin/index?id=<%=params[:c_id] %>">Back</a>
@@ -37,6 +42,12 @@
         </div><!--DLP-->
 
      <script type="text/javascript">
+         function open_no_pdf() {
+             setTimeout(function(){
+             hudMsg('info', "Agenda detail missing against this conference.")
+             },100)
+         }
+
          function open_pdf() {
         if (<%= @conference.agenda_detail.blank? %>) {
             alert("Agenda detail missing against this conference.")
