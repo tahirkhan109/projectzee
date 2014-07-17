@@ -31,7 +31,6 @@
 
       <%#= params[:id]%>
       <% @attendee = AttendeeDetail.find(params[:id]) %>
-      <%=  @attendee.inspect %>
       <% @conference = @attendee.conference %>
       <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
 
