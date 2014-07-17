@@ -31,7 +31,8 @@
 
       <%#= params[:id]%>
       <% @attendee = AttendeeDetail.find(params[:id]) %>
-      <% @conference = @attendee.conference %>
+      <%# @conference = @attendee.conference %>
+      <% @conference = Conference.find(@attendee.conference_id) %>
       <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
 
       <div class="w_100 t_boxes">
@@ -55,38 +56,43 @@
 
 <!--/attendee_details/attendee_agenda_detail?id=<%#= @attendee.id %>-->
 <script type="text/javascript">
-//    function open_pdf() {
-//        //alert('123')
-//
-//        if (<%#= @conference.agenda_detail.blank? %>) {
-//
-//            hudMsg('info', "Agenda detail missing against this conference.")
-//            return false;
-//        }
-//        else {
-//            $.ajax({
-//                url: '/attendee_details/agenda_popup?id=' + <%#= @conference.id %>,
-//                type: 'get',
-//                dataType: 'html',
-//                processData: false,
-//                async: false,
-//                success: function (data) {
-//                    if (data == "not") {
-//                        window.location.href = '/sign_in';
-//                    }
-//                    else {
-//                        setTimeout(function(){
-//                            $("#all_partials").show;
-//                            $("#all_partials").css("display", "block");
-//                            $("#all_partials").html(data);
-//                        },1000)
-//                    }
-//                },
-//                error: function (data) {
-//                }
-//            });
-//        }
-//
-//
-//    }
+    function open_pdf() {
+        //alert('123')
+
+        if (<%= @conference.blank? %>) {
+            hudMsg('info', "Agenda detail missing against this conference.")
+            return false;
+        }
+        else {
+            if (<%= @conference.agenda_detail.blank? %>) {
+
+                hudMsg('info', "Agenda detail missing against this conference.")
+                return false;
+            }
+            else {
+                $.ajax({
+                    url: '/attendee_details/agenda_popup?id=' + <%= @conference.id %>,
+                    type: 'get',
+                    dataType: 'html',
+                    processData: false,
+                    async: false,
+                    success: function (data) {
+                        if (data == "not") {
+                            window.location.href = '/sign_in';
+                        }
+                        else {
+                            setTimeout(function () {
+                                $("#all_partials").show;
+                                $("#all_partials").css("display", "block");
+                                $("#all_partials").html(data);
+                            }, 1000)
+                        }
+                    },
+                    error: function (data) {
+                    }
+                });
+            }
+
+        }
+    }
 </script>
