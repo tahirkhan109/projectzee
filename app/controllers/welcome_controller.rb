@@ -113,6 +113,7 @@ class WelcomeController < ApplicationController
   def add_csv_data
     puts "000000000000000000000000000", params.inspect
     @conference = Conference.find(params[:conference_id])
+    if (params.has_key?(:csv_parse))
     file = AgendaDetail.new(csv_params)
     insert = []
     CSV.foreach(params[:csv_parse][:attach].path, headers: true) do |row, index|
@@ -146,6 +147,12 @@ class WelcomeController < ApplicationController
         insert << row
       end
     end
+
+    else
+      flash[:error] = 'Please Select A Csv Fie To Uplooad. . .'
+    end
+
+
     redirect_to @conference
   end
 
