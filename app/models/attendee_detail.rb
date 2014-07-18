@@ -4,8 +4,8 @@ class AttendeeDetail < ActiveRecord::Base
   validates :last_name, presence: true
   #validates :city, presence: true
   #validates :state, presence: true
-  has_one :flight_detail
-  has_one :ground_detail
+  has_one :flight_detail, dependent: :destroy
+  has_one :ground_detail, dependent: :destroy
   #has_one :agenda_detail
 
   #before_save :uppercase_first_name
