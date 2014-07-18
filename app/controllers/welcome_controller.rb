@@ -84,11 +84,8 @@ class WelcomeController < ApplicationController
   end
 
   def add_csv_popup
-    puts "000000000000000000000000000", params.inspect
     @conference = Conference.find(params[:id])
-
     render :partial => "csv_popup", :locals => {:@conference => @conference}
-
   end
 
 
@@ -117,45 +114,36 @@ class WelcomeController < ApplicationController
     puts "000000000000000000000000000", params.inspect
     @conference = Conference.find(params[:conference_id])
     file = AgendaDetail.new(csv_params)
-    puts "............................  .....", file.inspect
     insert = []
     CSV.foreach(params[:csv_parse][:attach].path, headers: true) do |row, index|
-      #if (row["first_name"].present? &&  row["last_name"].present?)
-
       if check_duplicate(params[:conference_id], row["first_name"], row["last_name"])
         @attendee = AttendeeDetail.new(:first_name => row["first_name"], :last_name => row["last_name"], :city => row["city"], :state => row["state"], :conference_id => params[:conference_id])
         if @attendee.save
-          @flight_detail = FlightDetail.create(:airline_name => row["airline_name"], :flight_number => row["flight_number"], :departuring_from => row["departing_from"], :departure_time => row["departure_time"], :arriving_at => row["arriving_at"], :arriving_time => row["arriving_time"], :connections => row["connections"], :record_locator => row["record_locator"], :attendee_detail_id => @attendee.id)
-          @ground_detail = GroundDetail.create(:departing_from => row["departing_from"], :departure_time => row["departure_time"], :destination => row["destination"], :estimated_transit_time => row["estimated_transit_time"], :instructions => row["instructions"], :attendee_detail_id => @attendee.id)
+          @flight_detail = FlightDetail.create(:airline_name => row["flight_airline_name"], :flight_number => row["flight_number"], :departuring_from => row["flight_departing_from"], :departure_time => row["flight_departure_time"], :arriving_at => row["flight_arriving_at"], :arriving_time => row["flight_arriving_time"], :connections => row["flight_connections"], :record_locator => row["flight_record_locator"], :attendee_detail_id => @attendee.id)
+          @ground_detail = GroundDetail.create(:departing_from => row["ground_departing_from"], :departure_time => row["ground_departure_time"], :destination => row["ground_destination"], :estimated_transit_time => row["ground_estimated_transit_time"], :instructions => row["ground_instructions"], :attendee_detail_id => @attendee.id)
         end
-        puts "//////////////////", row.inspect
-        puts "//////////////////", row["user_id"]
-        puts "//////////////////", row["first_name"]
-        puts "//////////////////", row["last_name"]
-        puts "//////////////////", row["city"]
-        puts "//////////////////", row["state"]
-        puts "//////////////////", row["airline_name"]
-        puts "//////////////////", row["flight_number"]
-        puts "//////////////////", row["record_locator"]
-        puts "//////////////////", row["departing_from"]
-        puts "//////////////////", row["departure_time"]
-        puts "//////////////////", row["arriving_at"]
-        puts "//////////////////", row["arriving_time"]
-        puts "//////////////////", row["connections"]
-        puts "//////////////////", row["departing_from"]
-        puts "//////////////////", row["departure_time"]
-        puts "//////////////////", row["destination"]
-        puts "//////////////////", row["estimated_transit_time"]
-        puts "//////////////////", row["instructions"]
+        #puts "//////////////////", row.inspect
+        #puts "//////////////////", row["user_id"]
+        #puts "//////////////////", row["first_name"]
+        #puts "//////////////////", row["last_name"]
+        #puts "//////////////////", row["city"]
+        #puts "//////////////////", row["state"]
+        #puts "//////////////////", row["flight_airline_name"]
+        #puts "//////////////////", row["flight_number"]
+        #puts "//////////////////", row["flight_record_locator"]
+        #puts "//////////////////", row["flight_departing_from"]
+        #puts "//////////////////", row["flight_departure_time"]
+        #puts "//////////////////", row["flight_arriving_at"]
+        #puts "//////////////////", row["flight_arriving_time"]
+        #puts "//////////////////", row["flight_connections"]
+        #puts "//////////////////", row["ground_departing_from"]
+        #puts "//////////////////", row["ground_departure_time"]
+        #puts "//////////////////", row["ground_destination"]
+        #puts "//////////////////", row["ground_estimated_transit_time"]
+        #puts "//////////////////", row["ground_instructions"]
         flash[:success] = 'Your File Has Been Uploaded SuccessFully. . .'
-        #redirect_to @conference
-        #end
       else
-        puts "00000000000000000000000000000000000000000", row
         insert << row
-        puts "***************************************", insert.inspect
-        #flash[:error] = 'Error Import Csv'
-        #redirect_to @conference
       end
     end
     redirect_to @conference

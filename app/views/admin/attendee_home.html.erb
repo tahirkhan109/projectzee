@@ -49,12 +49,6 @@
          }
 
          function open_pdf() {
-        if (<%= @conference.agenda_detail.blank? %>) {
-            alert("Agenda detail missing against this conference.")
-            hudMsg('info', "Agenda detail missing against this conference.")
-                 return false;
-             }
-             else {
                  $.ajax({
                      url: '/attendee_details/agenda_popup?id=' + <%= @conference.id %>,
                      type: 'get',
@@ -75,8 +69,5 @@
                      error: function (data) {
                      }
                  });
-             }
-
-
          }
      </script>
