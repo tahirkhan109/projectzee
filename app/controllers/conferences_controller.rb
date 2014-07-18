@@ -27,6 +27,14 @@ end
 
       @conference = Conference.find(params[:id])
       if @conference.delete
+        @attendees = @conference.attendee_details
+        unless @attendees.blank?
+        @attendees.each do |a|
+          a.delete
+          a.flight_detail.delete if a.flight_detail.present?
+          a.ground_detail.delete if a.ground_detail.present?
+        end
+        end
         flash[:success] = 'Conference Has Been Deleted Successfully'
         redirect_to conferences_path
       end
