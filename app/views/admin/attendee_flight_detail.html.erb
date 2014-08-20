@@ -5,7 +5,8 @@
                 	<div class="w_100">
                     	<div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div><!--d_logo-->
                       <% d= Date.today %>
-                        <div class="d_date"><%= d.strftime('%d %b %Y') %> - Chicago, IL</div><!--d_date-->
+                      <% @conf = Conference.find(params[:c_id]) %>
+                        <div class="d_date"><%= d.strftime('%d %b %Y') %> - <%= @conf.conf_header if @conf.conf_header.present? %></div><!--d_date-->
                     </div><!--w_100-->
                 </div><!--wrapper ends-->
             </div><!--dlp_in t_bg_colr--> 

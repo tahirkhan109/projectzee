@@ -51,7 +51,7 @@ end
 
   private
   def conf_params
-  params[:conference].permit(:title,:location,:start_datetime,:end_datetime)
+  params[:conference].permit(:title,:location,:start_datetime,:end_datetime,:conf_header)
   end
 
 

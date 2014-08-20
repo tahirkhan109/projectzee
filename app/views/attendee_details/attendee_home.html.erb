@@ -9,7 +9,9 @@
         <div class="d_logo"><a href="#"><img src="/assets/img_logoo.png"></a></div>
         <!--d_logo-->
         <% d= Date.today %>
-        <div class="d_date"><%= d.strftime('%d %b %Y') %> - Chicago, IL</div>
+        <% @attendee = AttendeeDetail.find(params[:id]) %>
+        <% @conference = @attendee.conference %>
+        <div class="d_date"><%= d.strftime('%d %b %Y') %> - <%= @conference.conf_header if @conference.conf_header.present? %></div>
         <!--d_date-->
       </div>
       <!--w_100-->
@@ -30,8 +32,6 @@
 
 
       <%#= params[:id]%>
-      <% @attendee = AttendeeDetail.find(params[:id]) %>
-      <% @conference = @attendee.conference %>
       <%# @conference = Conference.find(@attendee.conference_id) %>
       <p><%= @attendee.first_name + " " +@attendee.last_name %></p>
 
